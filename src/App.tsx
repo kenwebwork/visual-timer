@@ -7,12 +7,15 @@ import {
 import MainLayout from './layout/MainLayout'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
+import ArticleLayout from './layout/ArticleLayout'
 
 const router =createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<MainLayout />}>
       <Route index element={<HomePage />} />
-      <Route path='/about' element={<AboutPage />} />
+      <Route path='/' element={<ArticleLayout />}>
+        <Route path='/about' element={<AboutPage />} />
+      </Route>
     </Route>
   )
 )
