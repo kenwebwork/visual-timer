@@ -15,14 +15,14 @@ function MenuButton(){
       <div
         onClick={handleClick}
         className={isOpen ?
-          'relative py-1 px-2 rounded-md font-bold cursor-pointer text-blue-600 bg-white'
+          'relative py-1 px-2 rounded-md font-bold cursor-pointer translate-x-2 text-blue-600 bg-white'
           :
-          'relative py-1 px-2 rounded-md font-bold cursor-pointer text-white'}
+          'relative py-1 px-2 rounded-md font-bold cursor-pointer translate-x-2 text-white'}
       >
         Menu
       </div>
       {isOpen &&
-        <nav className="absolute top-full right-0 bg-white -translate-x-5 translate-y-2 rounded-md py-2 px-4 drop-shadow-md z-10">
+        <nav className="absolute top-full right-0 bg-white -translate-x-3 translate-y-2 rounded-md py-2 px-4 drop-shadow-md z-10">
           <ul className="min-w-24">
           {PAGES.map((page) => (
             <li key={page.url} className="mb-2">
