@@ -1,27 +1,17 @@
+import { APP_NAME } from "../utils/constants";
+
 function AboutPage(){
   return (
     <>
     <h1>About</h1>
-    <h2>section title</h2>
+    <h2>What's {APP_NAME}?</h2>
     <p>text is here description is here text is here description is here text is here description is here text is here description is here <a>link</a> text is here description is here text is here description is here text is here description is here </p>
-    <p>text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here </p>
-    <p>text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here </p>
-    <p>text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here </p>
-    <h2>section title</h2>
-    <p>text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here </p>
+    <h2>Recommended</h2>
+    <p>text is here</p>
     <ul>
-      <li>list is here</li>
-      <li>list is here</li>
-      <li>list is here</li>
-      <li>list is here</li>
+      <li>2 hours: 4 x 25 min work & 5 min break</li>
+      <li>1.5 hours: 45 min work & 10 min break & 45 min work</li>
     </ul>
-    <p>text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here </p>
-    <h2>section title</h2>
-    <p>text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here </p>
-    <h2>section title</h2>
-    <p>text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here </p>
-    <h2>section title</h2>
-    <p>text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here text is here description is here </p>
     </>
   );
 };

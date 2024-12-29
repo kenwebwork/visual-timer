@@ -1,4 +1,5 @@
-import { APP_NAME, APP_URL, EMAIL_ADSRESS } from "../utils/constants";
+import { APP_NAME, APP_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 function PrivacyPage(){
   return (
@@ -34,7 +35,7 @@ function PrivacyPage(){
       <p>We may update our Privacy Policy from time to time. Thus, we advise you to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately, after they are posted on this page.</p>
       <h2>Contact Us</h2>
       <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us.</p>
-      <p className="ml-10">{EMAIL_ADSRESS}</p>
+      <p className="ml-10">Please visit here: <Link to='/contact'>Contact Page</Link></p>
     </>
   );
 };

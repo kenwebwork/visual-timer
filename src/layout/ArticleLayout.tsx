@@ -32,7 +32,6 @@ function ArticleLayout(){
           }
           li::before {
             content: '- ';
-            margin-left: 1rem;
           }
           a {
             color: #00f;
