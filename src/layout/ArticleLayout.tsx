@@ -12,7 +12,7 @@ function ArticleLayout(){
             font-weight: bold;
           }
           h1, h2, p, li {
-            line-height: 1.8;
+            line-height: 1.6;
             color: #555;
           }
           h1 {
@@ -22,6 +22,9 @@ function ArticleLayout(){
             font-size: 1.3rem;
           }
           p, ul {
+            margin-bottom: 1.5rem;
+          }
+          p:last-child {
             margin-bottom: .8rem;
           }
           li::before {
