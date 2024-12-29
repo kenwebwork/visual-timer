@@ -1,10 +1,11 @@
 import SiteLogo from "../utils/SiteLogo";
+import MenuButton from "../components/MenuButton";
 
 function Header(){
   return (
     <>
       <SiteLogo />
-      <div className="py-1 px-2 bg-white rounded-md">Menu</div>
+      <MenuButton />
     </>
   );
 };
