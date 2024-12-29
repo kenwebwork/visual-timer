@@ -1,6 +1,8 @@
 export const APP_NAME: string = 'Visual Timer';
 export const APP_URL: string = 'https://visualtimeraaaaa';
+
 export const EMAIL_ADSRESS: string = 'support@hoge.com';
+export const X_ACCOUNT: string = 'https://xacount';
 
 interface pages {
   title: string;

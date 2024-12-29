@@ -8,6 +8,9 @@ function ArticleLayout(){
       </section>
       <style jsx>{`
         section {
+          h1 {
+            margin-bottom: 1rem;
+          }
           h1, h2 {
             font-weight: bold;
           }

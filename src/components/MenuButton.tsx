@@ -22,10 +22,10 @@ function MenuButton(){
         Menu
       </div>
       {isOpen &&
-        <nav className="absolute top-full right-0 bg-white -translate-x-5 translate-y-2 rounded-md py-2 px-3 drop-shadow-md z-10">
+        <nav className="absolute top-full right-0 bg-white -translate-x-5 translate-y-2 rounded-md py-2 px-4 drop-shadow-md z-10">
           <ul className="min-w-24">
           {PAGES.map((page) => (
-            <li key={page.url} className="mb-1">
+            <li key={page.url} className="mb-2">
               <NavLink
                 to={page.url}
                 onClick={() => setIsOpen(false)}
