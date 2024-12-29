@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PAGES } from "../utils/constants";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function MenuButton(){
   
@@ -14,24 +14,25 @@ function MenuButton(){
     <>
       <div
         onClick={handleClick}
-        className={
-          `relative py-1 px-2 rounded-md font-bold text-white cursor-pointer
-          ${isOpen && 'bg-white text-blue-600'}
-          `}>
+        className={isOpen ?
+          'relative py-1 px-2 rounded-md font-bold cursor-pointer text-blue-600 bg-white'
+          :
+          'relative py-1 px-2 rounded-md font-bold cursor-pointer text-white'}
+      >
         Menu
       </div>
       {isOpen &&
-        <nav className="absolute top-full right-0 bg-white -translate-x-5 translate-y-2 rounded-md py-2 px-3 drop-shadow-md">
+        <nav className="absolute top-full right-0 bg-white -translate-x-5 translate-y-2 rounded-md py-2 px-3 drop-shadow-md z-10">
           <ul className="min-w-24">
           {PAGES.map((page) => (
-            <li className="mb-1">
-              <Link
-                key={page.url}
+            <li key={page.url} className="mb-1">
+              <NavLink
                 to={page.url}
                 onClick={() => setIsOpen(false)}
+                className={({ isActive }: any) => (isActive ? 'text-blue-500 font-bold' : '')}
               >
                 - {page.title}
-              </Link>
+              </NavLink>
             </li>
           ))}
           </ul>

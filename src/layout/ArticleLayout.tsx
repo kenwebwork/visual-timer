@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 function ArticleLayout(){
   return (
     <>
-      <section className="p-3 rounded-md bg-slate-100">
+      <section className="p-4 rounded-md bg-slate-100">
         <Outlet />
       </section>
       <style jsx>{`

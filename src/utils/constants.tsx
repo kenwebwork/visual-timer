@@ -8,5 +8,5 @@ export const PAGES: pages[] = [
   { title: 'Top', url: '/' },
   { title: 'About', url: '/about' },
   { title: 'Contact', url: '/contact' },
-  { title: 'Privacy', url: '/pravacy-policy' },
+  { title: 'Privacy', url: '/privacy-policy' },
 ]
