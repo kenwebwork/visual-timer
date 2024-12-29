@@ -1,15 +1,23 @@
 function HomePage(){
   return (
     <>
-    <div className="wrapper">
+    <div className="wrapper m-auto pt-10 flex flex-col justify-center items-center">
       <div className="circleArea">
         <div className="circle">circle</div>
       </div>
-      <div className="counter">
-        <div className="countdown">25:00</div>
-        <div className="right">
-          <div>Minutes → 25 min</div>
-          <div className="button">START</div>
+      <div className="w-full text-center flex justify-center items-center py-2 px-4 rounded-md backdrop-opacity-5 backdrop-invert bg-white/60">
+        <div className="flex-1 text-5xl font-bold h-auto">25:00</div>
+        <div className="flex-1">
+          <select name="setting" id="setting" className="mb-4 text-lg bg-transparent">
+            <option value="5">5 min</option>
+            <option value="10">10 min</option>
+            <option value="15">15 min</option>
+            <option value="25">25 min</option>
+            <option value="30">30 min</option>
+            <option value="45">45 min</option>
+            <option value="60">60 min</option>
+          </select>
+          <div className="py-1 bg-blue-600 text-white rounded-md">START</div>
         </div>
       </div>
     </div>
@@ -17,20 +25,12 @@ function HomePage(){
         .wrapper {
           width: 85vw;
           max-width: 350px;
-          height: 100%;
-          margin: auto;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
           border: solid 1px black;
         }
         .circleArea {
           height: 85vw;
           max-height: 350px;
-          /* width: 60vw;
-          max-width: 400px; */
           width: 100%;
-          margin: auto;
           margin-bottom: .5rem;
           border: solid 1px black;
         }
@@ -39,30 +39,6 @@ function HomePage(){
           height: 100%;
           border-radius: 50%;
           border: solid 1px black;
-        }
-        .counter {
-          border: solid 1px black;
-          width: 100%;
-          text-align: center;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: white;
-          padding: .5rem 1rem;
-        }
-        .countdown {
-          font-size: 3rem;
-          font-weight: bold;
-          flex: 1;
-        }
-        .right {
-          flex:1 ;
-        }
-        .button {
-          background-color: blue;
-          color: white;
-          padding: .5rem 1rem;
-          /* text-align: center; */
         }
       `}</style>
     </>
