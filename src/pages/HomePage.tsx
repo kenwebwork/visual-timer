@@ -26,6 +26,26 @@ function HomePage(){
   const seconds: number = remainingTime % 60;
   const currentDeg:number = remainingTime > 3600 ? 0 : 360 - remainingTime / 10;
 
+  interface settingOptions {
+    value: number;
+    label: string;
+  }
+
+  const timeOptions: settingOptions[] = [
+    { value: 5, label: '5 min'},
+    { value: 10, label: '10 min'},
+    { value: 15, label: '15 min'},
+    { value: 20, label: '20 min'},
+    { value: 25, label: '25 min'},
+    { value: 30, label: '30 min'},
+    { value: 45, label: '45 min'},
+    { value: 60, label: '60 min'},
+  ];
+
+  const selectOption = (event: React.ChangeEvent<HTMLSelectElement>):void => {
+    setRemainingTime(Number(event.target.value) * 60);
+  }
+
   const handleClick = ():void => {
     setIsRunning(!isRunning);
   }
@@ -45,14 +65,10 @@ function HomePage(){
           {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
         </h2>
         <div className="flex-1">
-          <select name="setting" id="setting" className="mb-3 text-lg bg-transparent">
-            <option value="5">5 min</option>
-            <option value="10">10 min</option>
-            <option value="15">15 min</option>
-            <option value="25">25 min</option>
-            <option value="30">30 min</option>
-            <option value="45">45 min</option>
-            <option value="60">60 min</option>
+          <select name="setting" id="setting" className="mb-3 text-lg bg-transparent" onChange={selectOption}>
+          {timeOptions.map((timeOption) => (
+            <option key={timeOption.value} value={timeOption.value}>{timeOption.label}</option>
+          ))}
           </select>
           <div 
             className="py-1 bg-blue-600 text-white rounded-md"
