@@ -12,7 +12,7 @@ function Dials(){
     {value: 10, top: '22%', left: '1.5%'},
     {value: 15, top: '50%', left: '-19px'},
     {value: 20, top: '78%', left: '1.5%'},
-    {value: 25, top: '98%', left: '23%'},
+    {value: 25, top: '97.5%', left: '21.3%'},
   ] 
 
   return (

@@ -24,6 +24,7 @@ function HomePage(){
 
   const minutes: number = Math.floor(remainingTime / 60);
   const seconds: number = remainingTime % 60;
+  const currentDeg:number = remainingTime > 3600 ? 0 : 360 - remainingTime / 10;
 
   const handleClick = ():void => {
     setIsRunning(!isRunning);
@@ -36,7 +37,7 @@ function HomePage(){
         <Dials />
         <div 
           className="visualTimer w-full h-full rounded-full"
-          style={{background: 'conic-gradient(#eaeaea 210deg, #061298 210deg)'}}
+          style={{background: `conic-gradient(#eaeaea ${currentDeg}deg, #061298 ${currentDeg}deg)`}}
         ></div>
       </div>
       <div className="w-full text-center flex justify-center items-center py-2 px-4 rounded-md backdrop-opacity-5 backdrop-invert bg-white/60">
