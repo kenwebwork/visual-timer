@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Dials from "../features/timer/Dials";
+import { Helmet } from "react-helmet-async";
+import { APP_NAME } from "../utils/constants";
 
 function HomePage(){
 
@@ -25,6 +27,8 @@ function HomePage(){
   const minutes: number = Math.floor(remainingTime / 60);
   const seconds: number = remainingTime % 60;
   const currentDeg:number = remainingTime > 3600 ? 0 : 360 - remainingTime / 10;
+
+  const formatTime: string = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
 
   interface settingOptions {
     value: number;
@@ -52,6 +56,9 @@ function HomePage(){
 
   return (
     <>
+    <Helmet>
+      <title>{`${formatTime} - ${APP_NAME}`}</title>
+    </Helmet>
     <div className="wrapper m-auto pt-5 flex flex-col justify-center items-center">
       <div className="relative w-11/12 max-h-80 mb-7 aspect-square">
         <Dials />
@@ -62,12 +69,21 @@ function HomePage(){
       </div>
       <div className="w-full text-center flex justify-center items-center py-2 px-4 rounded-md backdrop-opacity-5 backdrop-invert bg-white/60">
         <h2 className="flex-1 text-5xl font-bold h-auto">
-          {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
+          {formatTime}
         </h2>
         <div className="flex-1">
-          <select name="setting" id="setting" className="mb-3 text-lg bg-transparent" onChange={selectOption}>
+          <select 
+            name="setting"
+            id="setting"
+            className="mb-3 text-lg bg-transparent"
+            onChange={selectOption}
+          >
           {timeOptions.map((timeOption) => (
-            <option key={timeOption.value} value={timeOption.value}>{timeOption.label}</option>
+            <option
+              key={timeOption.value}
+              value={timeOption.value}
+              selected={timeOption.value === 25 ? true : false}
+            >{timeOption.label}</option>
           ))}
           </select>
           <div 

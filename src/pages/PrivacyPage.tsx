@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet-async";
 import { APP_NAME, APP_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 
 function PrivacyPage(){
   return (
     <>
+      <Helmet>
+        <title>{`Privacy - ${APP_NAME}`}</title>
+      </Helmet>
       <h1>Privacy Policy</h1>
       <p>Company Name operates the Website Name website, which provides the SERVICE. 直すかも</p>
       <p>This page is used to inform website visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service, the {APP_NAME} website.</p>
