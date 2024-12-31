@@ -15,6 +15,8 @@ export const PAGES: pages[] = [
   { title: 'Privacy', url: '/privacy-policy' },
 ]
 
+export const INIT_MIN = 25;
+
 interface settingOptions {
   value: number;
   label: string;

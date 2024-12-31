@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
+import { INIT_MIN } from "../utils/constants";
 import Title from "../layout/Title";
 import Dials from "../features/timer/Dials";
 import VisualTimer from "../features/timer/VisualTimer";
 import getFormatTime from "../features/timer/functions/getFormatTime";
 import TimeSetting from "../features/timer/TimeSetting";
+import StartStopButton from "../features/timer/StartStopButton";
 
 function HomePage(){
 
-  const [remainingTime, setRemainingTime] = useState<number>(25 * 60);
+  const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
   const [isRunning, setIsRunning] = useState<boolean>(false);
 
   useEffect(() => {
@@ -26,13 +28,9 @@ function HomePage(){
     };
   }, [isRunning, remainingTime]);
 
-  // const selectOption = (event: React.ChangeEvent<HTMLSelectElement>):void => {
-  //   setRemainingTime(Number(event.target.value) * 60);
+  // const handleClick = ():void => {
+  //   setIsRunning(!isRunning);
   // }
-
-  const handleClick = ():void => {
-    setIsRunning(!isRunning);
-  }
 
   return (
     <>
@@ -48,12 +46,7 @@ function HomePage(){
         </div>
         <div className="flex-1">
           <TimeSetting setRemainingTime={setRemainingTime} />
-          <div 
-            className="py-1 bg-blue-600 text-white rounded-md cursor-pointer"
-            onClick={handleClick}
-          >
-            {isRunning ? 'STOP' : 'START'}
-          </div>
+          <StartStopButton setIsRunning={setIsRunning} isRunning={isRunning} />
         </div>
       </div>
     </div>
