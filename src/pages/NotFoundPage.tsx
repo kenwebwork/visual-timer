@@ -1,13 +1,10 @@
-import { Helmet } from "react-helmet-async";
+import Title from "../layout/Title";
 import { Link } from "react-router-dom";
-import { APP_NAME } from "../utils/constants";
 
 function NotFoundPage(){
   return (
     <>
-    <Helmet>
-      <title>{`404 - ${APP_NAME}`}</title>
-    </Helmet>
+    <Title pageName='404' />
     <p className="mt-16 leading-8 text-center">
       Sorry... <br />
       the page doesn't exist. <br />

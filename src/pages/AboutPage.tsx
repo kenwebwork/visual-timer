@@ -1,12 +1,10 @@
 import { APP_NAME } from "../utils/constants";
-import { Helmet } from "react-helmet-async";
+import Title from "../layout/Title";
 
 function AboutPage(){
   return (
     <>
-    <Helmet>
-      <title>{`About - ${APP_NAME}`}</title>
-    </Helmet>
+    <Title pageName='About' />
     <h1>About</h1>
     <h2>What's {APP_NAME}?</h2>
     <p>text is here description is here text is here description is here text is here description is here text is here description is here <a>link</a> text is here description is here text is here description is here text is here description is here </p>

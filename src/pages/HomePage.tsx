@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Dials from "../features/timer/Dials";
-import { Helmet } from "react-helmet-async";
-import { APP_NAME } from "../utils/constants";
+import Title from "../layout/Title";
 
 function HomePage(){
 
@@ -56,9 +55,7 @@ function HomePage(){
 
   return (
     <>
-    <Helmet>
-      <title>{`${formatTime} - ${APP_NAME}`}</title>
-    </Helmet>
+    <Title pageName={formatTime} />
     <div className="wrapper m-auto pt-5 flex flex-col justify-center items-center">
       <div className="relative w-11/12 max-h-80 mb-7 aspect-square">
         <Dials />
@@ -87,7 +84,7 @@ function HomePage(){
           ))}
           </select>
           <div 
-            className="py-1 bg-blue-600 text-white rounded-md"
+            className="py-1 bg-blue-600 text-white rounded-md cursor-pointer"
             onClick={handleClick}
           >
             {isRunning ? 'STOP' : 'START'}

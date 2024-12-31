@@ -1,12 +1,10 @@
-import { Helmet } from "react-helmet-async";
-import { APP_NAME, EMAIL_ADSRESS, X_ACCOUNT } from "../utils/constants";
+import Title from "../layout/Title";
+import { EMAIL_ADSRESS, X_ACCOUNT } from "../utils/constants";
 
 function ContactPage(){
   return (
     <>
-    <Helmet>
-      <title>{`Contact - ${APP_NAME}`}</title>
-    </Helmet>
+    <Title pageName='Contact' />
     <h1>Contact</h1>
     <p>If you have any questions or suggestions, do not hesitate to contact us.</p>
     <ul>
