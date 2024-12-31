@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      width: {
+        'screen-85': '85vw',
+      },
+      maxWidth: {
+        '350': '350px',
+      }
+    },
   },
   plugins: [],
 }

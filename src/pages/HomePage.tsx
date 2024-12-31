@@ -28,14 +28,10 @@ function HomePage(){
     };
   }, [isRunning, remainingTime]);
 
-  // const handleClick = ():void => {
-  //   setIsRunning(!isRunning);
-  // }
-
   return (
     <>
     <Title pageName={getFormatTime(remainingTime)} />
-    <div className="wrapper m-auto pt-5 flex flex-col justify-center items-center">
+    <div className="w-screen-85 max-w-350 m-auto pt-5 flex flex-col justify-center items-center">
       <div className="relative w-11/12 max-h-80 mb-7 aspect-square">
         <Dials />
         <VisualTimer remainingTime={remainingTime} />
@@ -50,12 +46,6 @@ function HomePage(){
         </div>
       </div>
     </div>
-      <style jsx>{`
-        .wrapper {
-          width: 85vw;
-          max-width: 350px;
-        }
-      `}</style>
     </>
   );
 };
