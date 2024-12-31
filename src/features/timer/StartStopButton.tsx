@@ -6,7 +6,11 @@ function StartStopButton(props: {setIsRunning: (isRunning: boolean) => void, isR
 
   return (
     <div 
-      className="py-1 bg-blue-600 text-white rounded-md cursor-pointer"
+      className={ props.isRunning ?
+        "py-1 bg-blue-600 text-white rounded-md cursor-pointer mt-1"
+        :
+        "py-1 bg-blue-600 text-white rounded-md cursor-pointer border-b-4 border-blue-900"
+      }
       onClick={handleClick}
     >
       {props.isRunning ? 'STOP' : 'START'}
