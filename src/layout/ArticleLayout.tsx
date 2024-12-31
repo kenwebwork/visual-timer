@@ -8,6 +8,9 @@ function ArticleLayout(){
       </section>
       <style jsx>{`
         section {
+          margin: auto;
+          max-width: 384px;
+
           h1 {
             margin-bottom: 1rem;
           }
