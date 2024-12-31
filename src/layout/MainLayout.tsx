@@ -24,7 +24,7 @@ function MainLayout(){
 
   return (
     <>
-      <header ref={headerRef} className="relative flex justify-between bg-blue-600 py-2 px-5">
+      <header ref={headerRef} className="bg-blue-600 py-2 px-5">
         <Header />
       </header>
       <main className="bg-blue-200 pt-3 px-5" style={{ minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)` }} >
