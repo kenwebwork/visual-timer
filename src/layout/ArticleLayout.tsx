@@ -27,7 +27,7 @@ function ArticleLayout(){
           h2 {
             font-size: 1.3rem;
           }
-          p, ul {
+          p, ul, img {
             margin-bottom: 1.5rem;
           }
           p:last-child {
@@ -39,6 +39,9 @@ function ArticleLayout(){
           a {
             color: #00f;
             text-decoration: underline;
+          }
+          img {
+            border-radius: 0.375rem;
           }
         }
       `}</style>
