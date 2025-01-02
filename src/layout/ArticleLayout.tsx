@@ -6,7 +6,7 @@ function ArticleLayout(){
       <section className="p-4 rounded-md bg-slate-100">
         <Outlet />
       </section>
-      <style jsx>{`
+      <style>{`
         section {
           margin: auto;
           max-width: 384px;
