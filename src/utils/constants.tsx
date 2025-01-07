@@ -1,5 +1,5 @@
 export const APP_NAME: string = 'B-Timer';
-export const APP_URL: string = 'https://visualtimeraaaaa';
+export const APP_URL: string = 'https://b-timer.com/';
 
 // export const EMAIL_ADSRESS: string = 'support@hoge.com';
 export const X_ACCOUNT: string = 'https://xacount';
