@@ -3,6 +3,7 @@ export const APP_URL: string = 'https://b-timer.com';
 
 // export const EMAIL_ADSRESS: string = 'support@hoge.com';
 export const X_ACCOUNT: string = 'https://xacount';
+export const THREADS_ACCOUNT: string = 'https://www.threads.net/@b_timer_';
 
 interface pages {
   title: string;
