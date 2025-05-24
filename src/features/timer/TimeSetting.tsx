@@ -1,22 +1,23 @@
-import { useState } from "react";
-import { INIT_MIN, TIME_OPTIONS } from "../../utils/constants";
+import { TIME_OPTIONS } from "../../utils/constants";
 
-function VisualTimer(props: {setRemainingTime: (time: number) => void }){
-
-  const [selectedValue, setSelectedValue] = useState<number>(INIT_MIN);
-
+function VisualTimer(
+  props: {
+    setRemainingTime: (time: number) => void,
+    setSelectedTime: (time: number) => void,
+    selectedTime: number,
+}){
   const selectOption = (event: React.ChangeEvent<HTMLSelectElement>):void => {
     props.setRemainingTime(Number(event.target.value) * 60);
-    setSelectedValue(Number(event.target.value));
+    props.setSelectedTime(Number(event.target.value));
   }
 
   return (
     <select 
       name="setting"
       id="setting"
-      className="mb-3 text-lg bg-transparent"
+      className="text-lg bg-transparent"
       onChange={selectOption}
-      value={selectedValue}
+      value={props.selectedTime}
     >
     {TIME_OPTIONS.map((timeOption) => (
       <option

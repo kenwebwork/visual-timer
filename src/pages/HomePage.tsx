@@ -6,10 +6,11 @@ import VisualTimer from "../features/timer/VisualTimer";
 import getFormatTime from "../features/timer/functions/getFormatTime";
 import TimeSetting from "../features/timer/TimeSetting";
 import StartStopButton from "../features/timer/StartStopButton";
+import ResetButton from "../features/timer/ResetButton";
 
 function HomePage(){
-
   const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
+  const [selectedTime, setSelectedTime] = useState<number>(INIT_MIN);
   const [isRunning, setIsRunning] = useState<boolean>(false);
 
   useEffect(() => {
@@ -28,6 +29,7 @@ function HomePage(){
     };
   }, [isRunning, remainingTime]);
 
+
   return (
     <>
     <Title pageName={getFormatTime(remainingTime)} />
@@ -36,13 +38,23 @@ function HomePage(){
         <Dials />
         <VisualTimer remainingTime={remainingTime} />
       </div>
-      <div className="w-full text-center flex justify-center items-center py-2 px-4 rounded-md backdrop-opacity-5 backdrop-invert bg-white/60">
-        <div className="flex-1 h-auto">
+      <div className="
+        w-full text-center flex justify-center items-center
+        py-2 px-4
+        rounded-md
+        bg-white/60 backdrop-opacity-5 backdrop-invert
+      ">
+        <div className="flex-1 flex-col h-auto">
           <h2 className="text-5xl font-bold">{getFormatTime(remainingTime)}</h2>
+          <TimeSetting 
+            setRemainingTime={setRemainingTime}
+            setSelectedTime={setSelectedTime}
+            selectedTime={selectedTime}
+          />
         </div>
-        <div className="flex-1">
-          <TimeSetting setRemainingTime={setRemainingTime} />
+        <div className="flex-1 ml-3">
           <StartStopButton setIsRunning={setIsRunning} isRunning={isRunning} />
+          <ResetButton setRemainingTime={setRemainingTime} selectedTime={selectedTime} />
         </div>
       </div>
     </div>
