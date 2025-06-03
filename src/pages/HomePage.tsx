@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { INIT_MIN } from "../utils/constants";
 import Title from "../layout/Title";
 import Dials from "../features/timer/Dials";
@@ -13,21 +13,58 @@ function HomePage(){
   const [selectedTime, setSelectedTime] = useState<number>(INIT_MIN);
   const [isRunning, setIsRunning] = useState<boolean>(false);
 
-  useEffect(() => {
-    let timerId: NodeJS.Timeout | undefined;
+  const startTimeRef = useRef<number | null>(null);
+  const endTimeRef = useRef<number | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-    if (isRunning && remainingTime > 0) {
-      timerId = setInterval(() => {
-        setRemainingTime((prevTime) => prevTime - 1);
+  // handle key down 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.code === "Space") {
+        event.preventDefault();
+        setIsRunning((prev) => !prev);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // timer
+  useEffect(() => {
+    if (isRunning) {
+      const now = Date.now();
+      if (!startTimeRef.current || !endTimeRef.current) {
+        startTimeRef.current = now;
+        endTimeRef.current = now + remainingTime * 1000;
+      }
+
+      timerRef.current = setInterval(() => {
+        const now = Date.now();
+        const diff = Math.max(0, Math.floor((endTimeRef.current! - now) / 1000));
+        setRemainingTime(diff);
+
+        if (diff === 0) {
+          setIsRunning(false);
+          clearInterval(timerRef.current!);
+          startTimeRef.current = null;
+          endTimeRef.current = null;
+        }
       }, 1000);
-    } else if (remainingTime === 0) {
-      setIsRunning(false);
     }
 
     return () => {
-      if (timerId) clearInterval(timerId);
+      if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isRunning, remainingTime]);
+  }, [isRunning]);
+
+  // clear ref
+  useEffect(() => {
+    if (!isRunning) {
+      startTimeRef.current = null;
+      endTimeRef.current = null;
+    }
+  }, [isRunning]);
 
 
   return (
