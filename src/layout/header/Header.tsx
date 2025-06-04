@@ -1,7 +1,8 @@
+import React from "react";
 import SiteLogo from "../../utils/SiteLogo";
 import Menu from "./Menu";
 
-function Header(){
+const Header: React.FC = () => {
   return (
     <div className="relative flex justify-between max-w-96 m-auto">
       <SiteLogo />

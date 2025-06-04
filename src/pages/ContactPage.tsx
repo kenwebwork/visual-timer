@@ -1,7 +1,8 @@
+import React from "react";
 import Title from "../layout/Title";
 import { THREADS_ACCOUNT, X_ACCOUNT } from "../utils/constants";
 
-function ContactPage(){
+const ContactPage: React.FC = () => {
   return (
     <>
     <Title pageName='Contact' />

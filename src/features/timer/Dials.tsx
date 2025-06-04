@@ -1,4 +1,4 @@
-function Dials(){
+const Dials: React.FC = () => {
 
   interface dials {
     value: number;

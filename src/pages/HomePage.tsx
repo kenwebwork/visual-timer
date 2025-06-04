@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { INIT_MIN } from "../utils/constants";
 import Title from "../layout/Title";
 import Dials from "../features/timer/Dials";
@@ -8,7 +8,7 @@ import TimeSetting from "../features/timer/TimeSetting";
 import StartStopButton from "../features/timer/StartStopButton";
 import ResetButton from "../features/timer/ResetButton";
 
-function HomePage(){
+const HomePage: React.FC = () => {
   const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
   const [selectedTime, setSelectedTime] = useState<number>(INIT_MIN);
   const [isRunning, setIsRunning] = useState<boolean>(false);

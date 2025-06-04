@@ -1,7 +1,8 @@
+import React from "react";
 import Title from "../layout/Title";
 import { Link } from "react-router-dom";
 
-function NotFoundPage(){
+const NotFoundPage: React.FC = () => {
   return (
     <>
     <Title pageName='404' />

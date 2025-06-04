@@ -1,4 +1,11 @@
-function ResetButton(props: {setRemainingTime: (selectedTime: number) => void, selectedTime: number}){
+import React from "react";
+
+interface ResetButtonProps {
+  setRemainingTime: React.Dispatch<React.SetStateAction<number>>;
+  selectedTime: number;
+}
+
+const ResetButton: React.FC<ResetButtonProps> = ({setRemainingTime, selectedTime}) => {
 
   return (
     <div 
@@ -12,7 +19,7 @@ function ResetButton(props: {setRemainingTime: (selectedTime: number) => void, s
         cursor-pointer
         hover:border-b-1
       "
-      onClick={() => props.setRemainingTime(props.selectedTime * 60)}
+      onClick={() => setRemainingTime(selectedTime * 60)}
     >
       Reset
     </div>

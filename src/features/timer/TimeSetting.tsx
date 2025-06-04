@@ -1,14 +1,20 @@
+import React from "react";
 import { TIME_OPTIONS } from "../../utils/constants";
 
-function VisualTimer(
-  props: {
-    setRemainingTime: (time: number) => void,
-    setSelectedTime: (time: number) => void,
-    selectedTime: number,
-}){
+interface VisualTimerProps {
+  setRemainingTime: React.Dispatch<React.SetStateAction<number>>;
+  setSelectedTime: React.Dispatch<React.SetStateAction<number>>;
+  selectedTime: number;
+}
+
+const VisualTimer: React.FC<VisualTimerProps> = ({
+  setRemainingTime,
+  setSelectedTime,
+  selectedTime,
+}) => {
   const selectOption = (event: React.ChangeEvent<HTMLSelectElement>):void => {
-    props.setRemainingTime(Number(event.target.value) * 60);
-    props.setSelectedTime(Number(event.target.value));
+    setRemainingTime(Number(event.target.value) * 60);
+    setSelectedTime(Number(event.target.value));
   }
 
   return (
@@ -17,7 +23,7 @@ function VisualTimer(
       id="setting"
       className="text-lg bg-transparent"
       onChange={selectOption}
-      value={props.selectedTime}
+      value={selectedTime}
     >
     {TIME_OPTIONS.map((timeOption) => (
       <option

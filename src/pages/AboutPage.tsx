@@ -1,8 +1,9 @@
+import React from "react";
 import { APP_NAME } from "../utils/constants";
 import Title from "../layout/Title";
 import howToUse from "../assets/images/howToUse.webp";
 
-function AboutPage(){
+const AboutPage: React.FC = () => {
   return (
     <>
     <Title pageName='About' />

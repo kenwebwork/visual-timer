@@ -1,6 +1,7 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 
-function ArticleLayout(){
+const ArticleLayout: React.FC = () => {
   return (
     <>
       <section className="p-4 rounded-md bg-slate-100">

@@ -1,7 +1,12 @@
+import React from 'react'
 import { APP_NAME } from "../utils/constants";
 import { useEffect } from "react";
 
-function Title({ pageName }: { pageName: string }) {
+interface TitleProps {
+  pageName: string;
+}
+
+const Title: React.FC<TitleProps> = ({pageName}) => {
   useEffect(() => {
     document.title = `${pageName} | ${APP_NAME}`;
   }, [pageName]);

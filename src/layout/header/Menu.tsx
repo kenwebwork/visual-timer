@@ -1,10 +1,9 @@
+import React from "react";
 import { useState } from "react";
 import MenuButton from "./MenuButton";
 import MenuCard from "./MenuCard";
 
-
-function Menu(){
-  
+const Menu: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (

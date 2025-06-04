@@ -1,7 +1,8 @@
+import React from 'react';
 import { Link } from 'react-router-dom'
 import { APP_NAME } from './constants';
 
-function SiteLogo(){
+const SiteLogo: React.FC = () => {
   return (
     <Link to='/' className='text-lg font-bold text-gray-200'>
       {APP_NAME}

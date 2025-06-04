@@ -1,4 +1,4 @@
-function getSeconds(remainingTime: number): number{
+const getSeconds = (remainingTime: number): number => {
   return remainingTime % 60;
 }
 

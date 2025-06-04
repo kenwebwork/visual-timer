@@ -1,8 +1,9 @@
+import React from "react";
 import Title from "../layout/Title";
 import { APP_NAME, APP_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 
-function PrivacyPage(){
+const PrivacyPage: React.FC = () => {
   return (
     <>
       <Title pageName='Privacy Policy' />

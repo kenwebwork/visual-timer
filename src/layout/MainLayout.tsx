@@ -1,9 +1,10 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./header/Header";
 import Footer from "./Footer";
 import { useEffect, useRef, useState } from "react";
 
-function MainLayout(){
+const MainLayout: React.FC = () => {
   
   const headerRef = useRef<HTMLElement | null>(null);
   const footerRef = useRef<HTMLElement | null>(null);
