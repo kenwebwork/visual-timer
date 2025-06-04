@@ -58,6 +58,14 @@ const HomePage: React.FC = () => {
     };
   }, [isRunning]);
 
+  // change or reset time
+  useEffect(() => {
+    if (isRunning) {
+      const now = Date.now();
+      endTimeRef.current = now + remainingTime * 1000;
+    }
+  }, [remainingTime]);
+
   // clear ref
   useEffect(() => {
     if (!isRunning) {
