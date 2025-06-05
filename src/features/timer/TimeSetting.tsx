@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { TIME_OPTIONS } from "../../utils/constants";
 
 interface VisualTimerProps {
@@ -12,23 +12,41 @@ const VisualTimer: React.FC<VisualTimerProps> = ({
   setSelectedTime,
   selectedTime,
 }) => {
+
   const selectOption = (event: React.ChangeEvent<HTMLSelectElement>):void => {
     setRemainingTime(Number(event.target.value) * 60);
     setSelectedTime(Number(event.target.value));
+    console.log(selectedTime);
   }
+  
+  const selectedOptionRef = useRef(null);
+  useEffect(() => {
+    if (selectedOptionRef.current) {
+      selectedOptionRef.current.scrollIntoView({ block: 'center' });
+    }
+  }, []);
 
   return (
     <select 
       name="setting"
       id="setting"
-      className="text-lg bg-transparent"
+      className="
+        w-full h-18
+        rounded-md
+        text-lg text-center
+        bg-transparent
+      "
       onChange={selectOption}
       value={selectedTime}
+      defaultValue="25"
+      multiple
     >
     {TIME_OPTIONS.map((timeOption) => (
       <option
         key={timeOption.value}
         value={timeOption.value}
+        className={timeOption.value === selectedTime ? "bg-gray-200" : "bg-white"}
+        ref={timeOption.value === selectedTime ? selectedOptionRef : null}
       >
         {timeOption.label}
       </option>

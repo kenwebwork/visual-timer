@@ -84,22 +84,23 @@ const HomePage: React.FC = () => {
         <VisualTimer remainingTime={remainingTime} />
       </div>
       <div className="
-        w-full text-center flex justify-center items-center
-        py-2 px-4
+        pt-2 px-4 pb-3 w-full
         rounded-md
         bg-white/60 backdrop-opacity-5 backdrop-invert
       ">
-        <div className="flex-1 flex-col h-auto">
-          <h2 className="text-5xl font-bold">{getFormatTime(remainingTime)}</h2>
-          <TimeSetting 
-            setRemainingTime={setRemainingTime}
-            setSelectedTime={setSelectedTime}
-            selectedTime={selectedTime}
-          />
-        </div>
-        <div className="flex-1 ml-3">
-          <StartStopButton setIsRunning={setIsRunning} isRunning={isRunning} />
-          <ResetButton setRemainingTime={setRemainingTime} selectedTime={selectedTime} />
+        <h2 className="mb-5 text-6xl text-center font-bold">{getFormatTime(remainingTime)}</h2>
+        <div className="flex h-auto">
+          <div className="w-1/2 mr-5">
+            <TimeSetting 
+              setRemainingTime={setRemainingTime}
+              setSelectedTime={setSelectedTime}
+              selectedTime={selectedTime}
+            />
+          </div>
+          <div className="w-1/2 flex flex-col justify-center">
+            <StartStopButton setIsRunning={setIsRunning} isRunning={isRunning} />
+            <ResetButton setRemainingTime={setRemainingTime} selectedTime={selectedTime} />
+          </div>
         </div>
       </div>
     </div>
