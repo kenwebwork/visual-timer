@@ -18,8 +18,8 @@ const VisualTimer: React.FC<VisualTimerProps> = ({
     setSelectedTime(Number(event.target.value));
     console.log(selectedTime);
   }
-  
-  const selectedOptionRef = useRef(null);
+
+  const selectedOptionRef = useRef<HTMLOptionElement | null>(null);
   useEffect(() => {
     if (selectedOptionRef.current) {
       selectedOptionRef.current.scrollIntoView({ block: 'center' });
