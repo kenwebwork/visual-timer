@@ -13,10 +13,9 @@ const StartStopButton: React.FC<StartStopButtonProps> = ({setIsRunning, isRunnin
 
   return (
     <div 
-      className={ isRunning ?
-        "py-1 bg-blue-600 text-white text-center rounded-md cursor-pointer mt-1"
-        :
-        "py-1 bg-blue-600 text-white text-center rounded-md cursor-pointer border-b-4 border-blue-900"
+      className={ isRunning 
+        ? "py-1 bg-blue-600 text-white text-center rounded-md cursor-pointer mt-1"
+        : "py-1 bg-blue-600 text-white text-center rounded-md cursor-pointer border-b-4 border-blue-900"
       }
       onClick={handleClick}
     >

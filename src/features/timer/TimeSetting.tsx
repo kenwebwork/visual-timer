@@ -31,10 +31,10 @@ const VisualTimer: React.FC<VisualTimerProps> = ({
       name="setting"
       id="setting"
       className="
-        w-full h-18
+        w-full h-17
         rounded-md
-        text-lg text-center
         bg-transparent
+        text-lg text-center
       "
       onChange={selectOption}
       value={selectedTime}

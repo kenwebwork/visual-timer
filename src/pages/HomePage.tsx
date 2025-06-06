@@ -17,19 +17,6 @@ const HomePage: React.FC = () => {
   const endTimeRef = useRef<number | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // handle key down 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent): void => {
-      if (event.code === "Space") {
-        event.preventDefault();
-        setIsRunning((prev) => !prev);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
   // timer
   useEffect(() => {
     if (isRunning) {
@@ -58,6 +45,7 @@ const HomePage: React.FC = () => {
     };
   }, [isRunning]);
 
+  // manually setting
   const adjustEndTime = (newRemainingTime: number) => {
     setRemainingTime(newRemainingTime);
 
@@ -75,6 +63,18 @@ const HomePage: React.FC = () => {
     }
   }, [isRunning]);
 
+  // handle key down 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.code === "Space") {
+        event.preventDefault();
+        setIsRunning((prev) => !prev);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
     <>
@@ -84,11 +84,7 @@ const HomePage: React.FC = () => {
         <Dials />
         <VisualTimer remainingTime={remainingTime} />
       </div>
-      <div className="
-        pt-2 px-4 pb-3 w-full
-        rounded-md
-        bg-white/60 backdrop-opacity-5 backdrop-invert
-      ">
+      <div className="pt-2 px-4 pb-3 w-full rounded-md bg-white/60 backdrop-opacity-5 backdrop-invert">
         <h2 className="mb-5 text-6xl text-center font-bold">{getFormatTime(remainingTime)}</h2>
         <div className="flex h-auto">
           <div className="w-1/2 mr-5">
