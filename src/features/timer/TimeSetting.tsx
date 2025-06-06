@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { TIME_OPTIONS } from "../../utils/constants";
 
 interface VisualTimerProps {
-  setRemainingTime: React.Dispatch<React.SetStateAction<number>>;
+  setRemainingTime: (newRemainingTime: number) => void;
   setSelectedTime: React.Dispatch<React.SetStateAction<number>>;
   selectedTime: number;
 }

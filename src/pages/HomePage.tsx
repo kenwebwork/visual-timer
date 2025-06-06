@@ -34,8 +34,8 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     if (isRunning) {
       const now = Date.now();
-      if (!startTimeRef.current || !endTimeRef.current) {
-        startTimeRef.current = now;
+      
+      if (!endTimeRef.current) {
         endTimeRef.current = now + remainingTime * 1000;
       }
 
@@ -44,27 +44,28 @@ const HomePage: React.FC = () => {
         const diff = Math.max(0, Math.floor((endTimeRef.current! - now) / 1000));
         setRemainingTime(diff);
 
-        if (diff === 0) {
+        if (diff <= 0) {
           setIsRunning(false);
-          clearInterval(timerRef.current!);
-          startTimeRef.current = null;
-          endTimeRef.current = null;
         }
-      }, 1000);
+      }, 250);
     }
 
     return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
     };
   }, [isRunning]);
 
-  // change or reset time
-  useEffect(() => {
+  const adjustEndTime = (newRemainingTime: number) => {
+    setRemainingTime(newRemainingTime);
+
     if (isRunning) {
       const now = Date.now();
-      endTimeRef.current = now + remainingTime * 1000;
+      endTimeRef.current = now + newRemainingTime * 1000;
     }
-  }, [remainingTime]);
+  };
 
   // clear ref
   useEffect(() => {
@@ -92,7 +93,7 @@ const HomePage: React.FC = () => {
         <div className="flex h-auto">
           <div className="w-1/2 mr-5">
             <TimeSetting 
-              setRemainingTime={setRemainingTime}
+              setRemainingTime={adjustEndTime}
               setSelectedTime={setSelectedTime}
               selectedTime={selectedTime}
             />
