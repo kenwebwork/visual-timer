@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { TIME_OPTIONS } from "../../utils/constants";
+import { INIT_MIN, TIME_OPTIONS } from "../../utils/constants";
 
 interface VisualTimerProps {
   setRemainingTime: (newRemainingTime: number) => void;
@@ -38,7 +38,7 @@ const VisualTimer: React.FC<VisualTimerProps> = ({
       "
       onChange={selectOption}
       value={selectedTime}
-      defaultValue="25"
+      defaultValue={INIT_MIN}
       multiple
     >
     {TIME_OPTIONS.map((timeOption) => (
