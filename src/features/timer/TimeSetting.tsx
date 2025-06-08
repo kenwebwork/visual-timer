@@ -2,19 +2,19 @@ import React, { useEffect, useRef } from "react";
 import { TIME_OPTIONS } from "../../utils/constants";
 
 interface TimeSettingProps {
-  setRemainingTime: (newRemainingTime: number) => void;
+  adjustEndTime: (newRemainingTime: number) => void;
   setSelectedTime: React.Dispatch<React.SetStateAction<number>>;
   selectedTime: number;
 }
 
 const TimeSetting: React.FC<TimeSettingProps> = ({
-  setRemainingTime,
+  adjustEndTime,
   setSelectedTime,
   selectedTime,
 }) => {
 
   const selectOption = (timeValue: number):void => {
-    setRemainingTime(timeValue * 60);
+    adjustEndTime(timeValue * 60);
     setSelectedTime(timeValue);
   }
 

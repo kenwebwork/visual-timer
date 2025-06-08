@@ -90,7 +90,6 @@ const HomePage: React.FC = () => {
           selectedTime={selectedTime}
           setIsRunning={setIsRunning}
           isRunning={isRunning}
-          setRemainingTime={setRemainingTime}
         />
       </section>
     </div>
