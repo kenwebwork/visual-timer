@@ -26,7 +26,7 @@ const AboutPage: React.FC = () => {
     },
   };
 
-  if (loading) {return <p>Preparing... ^w^</p>}
+  if (loading) {return <p>Preparing...</p>}
   return (
     <>
     <Title pageName='About' />
