@@ -4,9 +4,7 @@ import Title from "../layout/Title";
 import Dials from "../features/timer/Dials";
 import VisualTimer from "../features/timer/VisualTimer";
 import getFormatTime from "../features/timer/functions/getFormatTime";
-import TimeSetting from "../features/timer/TimeSetting";
-import StartStopButton from "../features/timer/StartStopButton";
-import ResetButton from "../features/timer/ResetButton";
+import Controller from "../features/timer/Controller";
 
 const HomePage: React.FC = () => {
   const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
@@ -80,26 +78,21 @@ const HomePage: React.FC = () => {
     <>
     <Title pageName={getFormatTime(remainingTime)} />
     <div className="w-screen-85 max-w-350 m-auto pt-5 flex flex-col justify-center items-center">
-      <div className="relative w-11/12 max-h-80 mb-7 aspect-square">
+      <section className="relative w-11/12 max-h-80 mb-7 aspect-square">
         <Dials />
         <VisualTimer remainingTime={remainingTime} />
-      </div>
-      <div className="pt-2 px-4 pb-3 w-full rounded-md bg-white/60 backdrop-opacity-5 backdrop-invert">
+      </section>
+      <section className="pt-2 px-4 pb-3 w-full rounded-md bg-white/60 backdrop-opacity-5 backdrop-invert">
         <h2 className="mb-5 text-6xl text-center font-bold">{getFormatTime(remainingTime)}</h2>
-        <div className="flex h-auto">
-          <div className="w-1/2 mr-5">
-            <TimeSetting 
-              setRemainingTime={adjustEndTime}
-              setSelectedTime={setSelectedTime}
-              selectedTime={selectedTime}
-            />
-          </div>
-          <div className="w-1/2 flex flex-col justify-center">
-            <StartStopButton setIsRunning={setIsRunning} isRunning={isRunning} />
-            <ResetButton setRemainingTime={setRemainingTime} selectedTime={selectedTime} />
-          </div>
-        </div>
-      </div>
+        <Controller 
+          adjustEndTime={adjustEndTime}
+          setSelectedTime={setSelectedTime}
+          selectedTime={selectedTime}
+          setIsRunning={setIsRunning}
+          isRunning={isRunning}
+          setRemainingTime={setRemainingTime}
+        />
+      </section>
     </div>
     </>
   );
