@@ -6,11 +6,10 @@ import {
 } from 'react-router-dom'
 import MainLayout from './layout/MainLayout'
 import HomePage from './pages/HomePage'
-import AboutPage from './pages/AboutPage'
 import ArticleLayout from './layout/ArticleLayout'
 import NotFoundPage from './pages/NotFoundPage'
 import ContactPage from './pages/ContactPage'
-import PrivacyPage from './pages/PrivacyPage'
+import SinglePage from './layout/SinglePage'
 
 const router =createBrowserRouter(
   createRoutesFromElements(
@@ -18,9 +17,9 @@ const router =createBrowserRouter(
       <Route index element={<HomePage />} />
       
       <Route path='/' element={<ArticleLayout />}>
-        <Route path='/about' element={<AboutPage />} />
+        <Route path='/about' element={<SinglePage id="about" title="About" />} />
+        <Route path='/privacy-policy' element={<SinglePage id="policy" title="Privacy Policy" />} />
         <Route path='/contact' element={<ContactPage />} />
-        <Route path='/privacy-policy' element={<PrivacyPage />} />
       </Route>
       
       <Route path='/*' element={<NotFoundPage />} />

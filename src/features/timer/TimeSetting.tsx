@@ -30,9 +30,7 @@ const TimeSetting: React.FC<TimeSettingProps> = ({
 
   useEffect(() => {
     const el = scrollRef.current;
-    if (el) {
-      el.scrollTop = initScrollPos;
-    }
+    if (el) { el.scrollTop = initScrollPos; }
   }, []);
 
   return (
@@ -44,7 +42,11 @@ const TimeSetting: React.FC<TimeSettingProps> = ({
       <div
         key={timeOption.label}
         onClick={() => selectOption(timeOption.value)}
-        className="flex items-center mb-[2px] pl-6 text-md"
+        className="
+          flex items-center
+          mx-auto mb-[2px]
+          text-md text-center
+        "
       >
         <input
           type="radio"
