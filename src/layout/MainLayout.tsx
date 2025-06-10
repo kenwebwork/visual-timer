@@ -23,11 +23,24 @@ const MainLayout: React.FC = () => {
     }
   }, []);
 
+  const [isMenuOpen, setMenuIsOpen] = useState<boolean>(false);
+
   return (
     <>
-      <header ref={headerRef} className="bg-blue-600 py-2 px-5">
-        <Header />
+      <header ref={headerRef} className="relative bg-blue-600 py-2 px-5">
+        <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setMenuIsOpen} />
       </header>
+      {isMenuOpen && <div 
+        style={{ minHeight: `calc(100vh - ${headerHeight}px` }}
+        onClick={() => setMenuIsOpen(false)}
+        className="
+          absolute t-0 l-0
+          w-screen
+          bg-black
+          opacity-[.1]
+          z-10
+        "
+      />}
       <main className="bg-blue-200 pt-3 px-5" style={{ minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)` }} >
         <Outlet />
       </main>

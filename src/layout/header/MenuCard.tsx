@@ -1,20 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { PAGES } from "../../utils/constants";
+import { HeaderProps } from "../../features/timer/interfaces/HeaderProps";
 
-interface MenuCardProps {
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const MenuCard: React.FC<MenuCardProps> = ({setIsOpen}) => {
+const MenuCard: React.FC<HeaderProps> = ({ setIsMenuOpen }) => {
   return (
-    <nav className="absolute top-full right-0 bg-white translate-x-2 translate-y-4 rounded-md py-2 px-4 drop-shadow-md z-10">
+    <nav className="absolute top-full right-0 bg-white translate-x-2 translate-y-4 rounded-md py-2 px-4 drop-shadow-md z-50">
       <ul className="min-w-24">
       {PAGES.map((page) => (
         <li key={page.url} className="mb-2">
           <NavLink
             to={page.url}
-            onClick={() => setIsOpen(false)}
+            onClick={() => setIsMenuOpen(false)}
             className={({ isActive }: any) => (isActive ? 'text-blue-500 font-bold' : '')}
           >
             - {page.title}

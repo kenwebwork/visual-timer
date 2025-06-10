@@ -1,15 +1,13 @@
 import React from "react";
-import { useState } from "react";
 import MenuButton from "./MenuButton";
 import MenuCard from "./MenuCard";
+import { HeaderProps } from "../../features/timer/interfaces/HeaderProps";
 
-const Menu: React.FC = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
+const Menu: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen}) => {
   return (
     <>
-      <MenuButton isOpen={isOpen} setIsOpen={setIsOpen} />
-      {isOpen && <MenuCard setIsOpen={setIsOpen} />}
+      <MenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      {isMenuOpen && <MenuCard setIsMenuOpen={setIsMenuOpen} />}
     </>
   );
 };
