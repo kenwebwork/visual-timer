@@ -9,6 +9,7 @@ interface ControllerProps {
   selectedTime: number;
   setIsRunning: React.Dispatch<React.SetStateAction<boolean>>;
   isRunning: boolean;
+  reset: () => void;
 }
 
 const Controller: React.FC<ControllerProps> = ({
@@ -17,6 +18,7 @@ const Controller: React.FC<ControllerProps> = ({
   selectedTime,
   setIsRunning,
   isRunning,
+  reset,
 }) => {
   return (
     <div className="flex h-auto">
@@ -29,7 +31,7 @@ const Controller: React.FC<ControllerProps> = ({
       </div>
       <div className="w-1/2 flex flex-col justify-center">
         <StartStopButton setIsRunning={setIsRunning} isRunning={isRunning} />
-        <ResetButton adjustEndTime={adjustEndTime} selectedTime={selectedTime} />
+        <ResetButton reset={reset} />
       </div>
     </div>
   )

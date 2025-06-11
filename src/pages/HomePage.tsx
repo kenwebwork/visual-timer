@@ -32,7 +32,7 @@ const HomePage: React.FC = () => {
         if (diff <= 0) {
           setIsRunning(false);
         }
-      }, 250);
+      }, 500);
     }
 
     return () => {
@@ -61,15 +61,47 @@ const HomePage: React.FC = () => {
     }
   }, [isRunning]);
 
+  const skipSeconds = (isForward: boolean, seconds: number) => {
+    const delta: number = isForward ? - seconds : seconds;
+
+    setRemainingTime((prev) => {
+      const newTime = Math.max(0, prev + delta);
+      const now = Date.now();
+      endTimeRef.current = now + newTime * 1000;
+      return newTime;
+    });
+  };
+
+  const reset = () => {
+    const newRemaining = selectedTime * 60;
+    setRemainingTime(newRemaining);
+    
+    const now = Date.now();
+    endTimeRef.current = now + newRemaining * 1000;
+    
+    setIsRunning(true);
+  };
+
   // handle key down 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent): void => {
-      if (event.code === "Space") {
+      const key = event.key.toLowerCase();
+      if (event.code === "Space" || key === "k") {
         event.preventDefault();
         setIsRunning((prev) => !prev);
+      } else if (key === "l") {
+        skipSeconds(true, 10);
+      } else if (key === "j") {
+        skipSeconds(false, 10);
+      } else if (event.code === "ArrowRight") {
+        skipSeconds(true, 5);
+      } else if (event.code === "ArrowLeft") {
+        skipSeconds(false, 5);
+      } else if (key === "r") {
+        reset();
       }
     };
-
+    
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
@@ -90,6 +122,7 @@ const HomePage: React.FC = () => {
           selectedTime={selectedTime}
           setIsRunning={setIsRunning}
           isRunning={isRunning}
+          reset={reset}
         />
       </section>
     </div>
