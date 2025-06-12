@@ -5,7 +5,7 @@ import { HeaderProps } from "../../features/timer/interfaces/HeaderProps";
 
 const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
-    <div className="relative flex justify-between max-w-96 m-auto">
+    <div className="relative flex justify-between align-center max-w-96 m-auto">
       <SiteLogo />
       <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
     </div>
