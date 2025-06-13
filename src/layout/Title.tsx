@@ -4,12 +4,19 @@ import { useEffect } from "react";
 
 interface TitleProps {
   pageName: string;
+  isRunning?: boolean;
 }
 
-const Title: React.FC<TitleProps> = ({pageName}) => {
+const Title: React.FC<TitleProps> = ({pageName, isRunning}) => {
+  const runningIcon: string | undefined = isRunning === true
+    ? "▶ "
+    : isRunning === false
+      ? "❚❚ "
+      : ""
+
   useEffect(() => {
-    document.title = `${pageName} | ${APP_NAME}`;
-  }, [pageName]);
+    document.title = runningIcon + pageName + " | " + APP_NAME;
+  }, [pageName, isRunning]);
 
   return null;
 }

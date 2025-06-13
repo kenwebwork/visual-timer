@@ -6,7 +6,7 @@ interface VisualTimerProps {
 
 const VisualTimer: React.FC<VisualTimerProps> = ({remainingTime}) => {
   const currentDeg:string = String(remainingTime > 3600 ? 0 : 360 - remainingTime / 10) + 'deg';
-
+  
   return (
     <div 
       className="w-full h-full rounded-full"

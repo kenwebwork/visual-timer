@@ -27,7 +27,7 @@ const MainLayout: React.FC = () => {
 
   return (
     <>
-      <header ref={headerRef} className="relative bg-blue-600 py-2 px-5">
+      <header ref={headerRef} className="relative py-2 px-5 bg-blue-600">
         <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setMenuIsOpen} />
       </header>
       {isMenuOpen && <div 
@@ -41,7 +41,7 @@ const MainLayout: React.FC = () => {
           z-10
         "
       />}
-      <main className="bg-blue-200 pt-3 px-5" style={{ minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)` }} >
+      <main className="pt-3 px-5 bg-blue-200" style={{ minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)` }} >
         <Outlet />
       </main>
       <footer ref={footerRef} className="bg-blue-200">

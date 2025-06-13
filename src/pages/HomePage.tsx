@@ -6,6 +6,8 @@ import VisualTimer from "../features/timer/VisualTimer";
 import getFormatTime from "../features/timer/functions/getFormatTime";
 import Controller from "../features/timer/Controller";
 
+// dark mode デザイン
+
 const HomePage: React.FC = () => {
   const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
   const [selectedTime, setSelectedTime] = useState<number>(INIT_MIN);
@@ -78,8 +80,6 @@ const HomePage: React.FC = () => {
     
     const now = Date.now();
     endTimeRef.current = now + newRemaining * 1000;
-    
-    setIsRunning(true);
   };
 
   // handle key down 
@@ -108,7 +108,7 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-    <Title pageName={getFormatTime(remainingTime)} />
+    <Title pageName={getFormatTime(remainingTime)} isRunning={isRunning} />
     <div className="w-screen-85 max-w-350 m-auto pt-5 flex flex-col justify-center items-center">
       <section className="relative w-11/12 max-h-80 mb-7 aspect-square">
         <Dials />
