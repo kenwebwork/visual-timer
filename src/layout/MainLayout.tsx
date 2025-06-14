@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./header/Header";
 import Footer from "./Footer";
 import { useEffect, useRef, useState } from "react";
+import { darkTheme } from "../utils/colors";
 
 const MainLayout: React.FC = () => {
   
@@ -27,7 +28,7 @@ const MainLayout: React.FC = () => {
 
   return (
     <>
-      <header ref={headerRef} className="relative py-2 px-5 bg-blue-600">
+      <header ref={headerRef} className={`relative py-2 px-5 bg-blue-600 dark:bg-[${darkTheme.headerBg}]`}>
         <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setMenuIsOpen} />
       </header>
       {isMenuOpen && <div 
@@ -41,10 +42,10 @@ const MainLayout: React.FC = () => {
           z-10
         "
       />}
-      <main className="pt-3 px-5 bg-blue-200" style={{ minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)` }} >
+      <main className={`pt-3 px-5 bg-blue-200 dark:bg-[${darkTheme.bg}]`} style={{ minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)` }} >
         <Outlet />
       </main>
-      <footer ref={footerRef} className="bg-blue-200">
+      <footer ref={footerRef} className={`bg-blue-200 dark:bg-[${darkTheme.bg}]`}>
         <Footer />
       </footer>
     </>

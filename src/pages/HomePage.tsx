@@ -5,6 +5,7 @@ import Dials from "../features/timer/Dials";
 import VisualTimer from "../features/timer/VisualTimer";
 import getFormatTime from "../features/timer/functions/getFormatTime";
 import Controller from "../features/timer/Controller";
+import { darkTheme } from "../utils/colors";
 
 // dark mode デザイン
 
@@ -114,8 +115,10 @@ const HomePage: React.FC = () => {
         <Dials />
         <VisualTimer remainingTime={remainingTime} />
       </section>
-      <section className="pt-2 px-4 pb-3 w-full rounded-md bg-white/60 backdrop-opacity-5 backdrop-invert">
-        <h2 className="mb-5 text-6xl text-center font-bold">{getFormatTime(remainingTime)}</h2>
+      <section className="pt-2 px-4 pb-3 w-full rounded-md bg-white/60 backdrop-opacity-5 backdrop-invert dark:bg-black/60">
+        <h2 className={`mb-5 text-6xl text-center font-bold dark:text-[${darkTheme.text}]`}>
+          {getFormatTime(remainingTime)}
+        </h2>
         <Controller 
           adjustEndTime={adjustEndTime}
           setSelectedTime={setSelectedTime}

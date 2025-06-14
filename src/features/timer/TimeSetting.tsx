@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { TIME_OPTIONS } from "../../utils/constants";
+import { darkTheme } from "../../utils/colors";
 
 interface TimeSettingProps {
   adjustEndTime: (newRemainingTime: number) => void;
@@ -36,7 +37,7 @@ const TimeSetting: React.FC<TimeSettingProps> = ({
   return (
     <div
       ref={scrollRef}
-      className="flex flex-col w-full h-24 bg-white rounded-md overflow-y-scroll"
+      className="flex flex-col w-full h-24 bg-white rounded-md overflow-y-scroll dark:bg-black/60"
     >
     {TIME_OPTIONS.map((timeOption) => (
       <div
@@ -54,7 +55,7 @@ const TimeSetting: React.FC<TimeSettingProps> = ({
           value={timeOption.value}
           checked={timeOption.value === selectedTime}
         />
-        <label htmlFor={timeOption.label} className="ml-2">{timeOption.label}</label>
+        <label htmlFor={timeOption.label} className={`ml-2 dark:text-[${darkTheme.text}]`}>{timeOption.label}</label>
       </div>
     ))}
     </div>

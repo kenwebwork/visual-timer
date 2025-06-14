@@ -1,2 +1,5 @@
-export const maineDark: string = "#0C114C";
-export const bgDark: string = "#314E74";
+export const darkTheme: Record<string, string> = {
+  headerBg: "#0C114C",
+  bg: "#1c2f47",
+  text: "#ccc",
+}
