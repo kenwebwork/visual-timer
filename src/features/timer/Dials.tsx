@@ -1,5 +1,3 @@
-import { darkTheme } from "../../utils/colors";
-
 const Dials: React.FC = () => {
 
   interface dials {
@@ -22,7 +20,7 @@ const Dials: React.FC = () => {
       {timeDials.map((dial) => (
       <span
         key={dial.value}
-        className={`absolute -translate-x-1/2 -translate-y-1/2 text-lg font-bold dark:text-[${darkTheme.text}]`}
+        className="absolute -translate-x-1/2 -translate-y-1/2 text-lg font-bold dark:text-[#ccc]"
         style={{top: dial.top, left: dial.left}}
       >
         {dial.value}

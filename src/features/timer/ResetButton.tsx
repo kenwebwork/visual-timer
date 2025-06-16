@@ -1,5 +1,4 @@
 import React from "react";
-import { darkTheme } from "../../utils/colors";
 
 interface ResetButtonProps {
   reset: () => void;
@@ -9,7 +8,7 @@ const ResetButton: React.FC<ResetButtonProps> = ({reset}) => {
 
   return (
     <div 
-      className={`
+      className="
         py-1 mt-3 mb-1
         bg-stone-200
         text-block text-center
@@ -17,10 +16,10 @@ const ResetButton: React.FC<ResetButtonProps> = ({reset}) => {
         border-b-2 border-stone-500
         cursor-pointer
         hover:border-b-1
-        dark:bg-[${darkTheme.headerBg}]
-        dark:text-[${darkTheme.text}]
+        dark:bg-[#1c2f47]
+        dark:text-[#ccc]
         dark:border-stone-800
-      `}
+      "
       onClick={reset}
     >Reset</div>
   );

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { TIME_OPTIONS } from "../../utils/constants";
-import { darkTheme } from "../../utils/colors";
 
 interface TimeSettingProps {
   adjustEndTime: (newRemainingTime: number) => void;
@@ -55,7 +54,7 @@ const TimeSetting: React.FC<TimeSettingProps> = ({
           value={timeOption.value}
           checked={timeOption.value === selectedTime}
         />
-        <label htmlFor={timeOption.label} className={`ml-2 dark:text-[${darkTheme.text}]`}>{timeOption.label}</label>
+        <label htmlFor={timeOption.label} className={`ml-2 dark:text-[#ccc]`}>{timeOption.label}</label>
       </div>
     ))}
     </div>
