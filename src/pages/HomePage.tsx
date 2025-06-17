@@ -6,8 +6,6 @@ import VisualTimer from "../features/timer/VisualTimer";
 import getFormatTime from "../features/timer/functions/getFormatTime";
 import Controller from "../features/timer/Controller";
 
-// dark mode デザイン
-
 const HomePage: React.FC = () => {
   const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
   const [selectedTime, setSelectedTime] = useState<number>(INIT_MIN);
@@ -17,6 +15,16 @@ const HomePage: React.FC = () => {
   const endTimeRef = useRef<number | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+  // fixing first behaviour
+  const [isFistSecond, setIsFirstSecond] = useState<boolean>(true);
+  const timeUpdateDuration: number = isFistSecond ? 1 : 500;
+
+  useEffect(() =>{
+    if (!isFistSecond && !isRunning) {
+      setIsFirstSecond(true);
+    }
+  }, [isRunning]
+)
   // timer
   useEffect(() => {
     if (isRunning) {
@@ -30,11 +38,12 @@ const HomePage: React.FC = () => {
         const now = Date.now();
         const diff = Math.max(0, Math.floor((endTimeRef.current! - now) / 1000));
         setRemainingTime(diff);
-
+  
         if (diff <= 0) {
           setIsRunning(false);
         }
-      }, 500);
+      }, timeUpdateDuration)
+      if (isFistSecond) {setIsFirstSecond(false)}
     }
 
     return () => {
