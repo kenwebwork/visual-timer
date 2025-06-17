@@ -15,36 +15,25 @@ const HomePage: React.FC = () => {
   const endTimeRef = useRef<number | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // fixing first behaviour
-  const [isFistSecond, setIsFirstSecond] = useState<boolean>(true);
-  const timeUpdateDuration: number = isFistSecond ? 1 : 500;
-
-  useEffect(() =>{
-    if (!isFistSecond && !isRunning) {
-      setIsFirstSecond(true);
-    }
-  }, [isRunning]
-)
   // timer
   useEffect(() => {
-    if (isRunning) {
-      const now = Date.now();
-      
-      if (!endTimeRef.current) {
-        endTimeRef.current = now + remainingTime * 1000;
-      }
+    if (!isRunning) {return}
+    
+    const now: number = Date.now();
+    endTimeRef.current = now + remainingTime * 1000;
 
-      timerRef.current = setInterval(() => {
-        const now = Date.now();
-        const diff = Math.max(0, Math.floor((endTimeRef.current! - now) / 1000));
-        setRemainingTime(diff);
-  
-        if (diff <= 0) {
-          setIsRunning(false);
-        }
-      }, timeUpdateDuration)
-      if (isFistSecond) {setIsFirstSecond(false)}
+    const tick = () =>{
+      const now: number = Date.now();
+      const diff: number = Math.max(0, Math.ceil((endTimeRef.current! - now) / 1000));
+      setRemainingTime(diff);
+
+      if (diff <= 0) {
+        setIsRunning(false);
+      }
     }
+
+    tick();
+    timerRef.current = setInterval(tick, 1000);
 
     return () => {
       if (timerRef.current) {
