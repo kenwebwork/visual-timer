@@ -1,0 +1,9 @@
+.time-setting::-webkit-scrollbar-button {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .time-setting::-webkit-scrollbar {
+    background-color: black;
+  }
+}

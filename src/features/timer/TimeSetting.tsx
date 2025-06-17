@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { TIME_OPTIONS } from "../../utils/constants";
+import '../../layout/parts/scrollbar.css'
 
 interface TimeSettingProps {
   adjustEndTime: (newRemainingTime: number) => void;
@@ -43,6 +44,7 @@ const TimeSetting: React.FC<TimeSettingProps> = ({
         key={timeOption.label}
         onClick={() => selectOption(timeOption.value)}
         className="
+          time-setting
           flex items-center
           mx-auto mb-[2px]
           text-md text-center
