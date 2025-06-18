@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TIME_OPTIONS } from "../../utils/constants";
 import '../../layout/parts/scrollbar.css'
 
@@ -14,6 +14,10 @@ const TimeSetting: React.FC<TimeSettingProps> = ({
   selectedTime,
 }) => {
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const radioRefs = useRef<Map<number, HTMLInputElement>>(new Map());
+  const [isFocused, setIsFocused] = useState(false);
+
   const selectOption = (timeValue: number):void => {
     adjustEndTime(timeValue * 60);
     setSelectedTime(timeValue);
@@ -26,13 +30,34 @@ const TimeSetting: React.FC<TimeSettingProps> = ({
     }
   }, []);
 
-  const scrollRef = useRef<HTMLDivElement>(null);
   const initScrollPos: number = 65;
-
+  
   useEffect(() => {
     const el = scrollRef.current;
     if (el) { el.scrollTop = initScrollPos; }
   }, []);
+
+  // shortcut
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key.toLowerCase() === 'm') {
+        const target: HTMLInputElement | undefined = radioRefs.current.get(selectedTime);
+        if (target) {
+          if (isFocused) {
+            target.blur();
+            setIsFocused(false);
+          } else {
+            target.focus();
+            target.scrollIntoView({ block: 'center', behavior: 'smooth' });
+            setIsFocused(true);
+          }
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedTime, isFocused]);
 
   return (
     <div
@@ -55,6 +80,13 @@ const TimeSetting: React.FC<TimeSettingProps> = ({
           id={timeOption.label}
           value={timeOption.value}
           checked={timeOption.value === selectedTime}
+          ref={(el) => {
+            if (el) {
+              radioRefs.current.set(timeOption.value, el);
+            } else {
+              radioRefs.current.delete(timeOption.value);
+            }
+          }}
         />
         <label htmlFor={timeOption.label} className={`ml-2 dark:text-[#ccc]`}>{timeOption.label}</label>
       </div>
