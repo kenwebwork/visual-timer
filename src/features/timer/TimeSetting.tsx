@@ -47,8 +47,7 @@ const TimeSetting: React.FC<TimeSettingProps> = ({
             target.blur();
             setIsFocused(false);
           } else {
-            target.focus();
-            target.scrollIntoView({ block: 'center', behavior: 'smooth' });
+            target.focus({ preventScroll: true });
             setIsFocused(true);
           }
         }
