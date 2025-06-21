@@ -11,14 +11,10 @@ const MainLayout: React.FC = () => {
   const footerRef = useRef<HTMLElement | null>(null);
 
   const [headerHeight, setHeaderHeight] = useState<number | null>(null);
-  const [footerHeight, setFooterHeight] = useState<number | null>(null);
 
   useEffect(() => {
     if (headerRef.current) {
       setHeaderHeight(headerRef.current.getBoundingClientRect().height);
-    }
-    if (footerRef.current) {
-      setFooterHeight(footerRef.current.getBoundingClientRect().height);
     }
   }, []);
 
