@@ -7,7 +7,7 @@ const MenuCard: React.FC<HeaderProps> = ({ setIsMenuOpen }) => {
   return (
     <nav className="absolute top-full right-0 bg-white translate-x-2 translate-y-4 rounded-md py-2 px-4 drop-shadow-md z-50">
       <ul className="min-w-24">
-      {PAGES.map((page) => (
+      {PAGES.slice(0, 3).map((page) => (
         <li key={page.url} className="mb-2">
           <NavLink
             to={page.url}

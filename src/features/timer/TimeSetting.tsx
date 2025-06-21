@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { TIME_OPTIONS } from "../../utils/constants";
-import '../../layout/parts/scrollbar.css'
+import { TIME_OPTIONS } from "../../features/timer/timerConsts";
+import '../../features/timer/scrollbar.css'
 
 interface TimeSettingProps {
   adjustEndTime: (newRemainingTime: number) => void;
@@ -18,7 +18,7 @@ const TimeSetting: React.FC<TimeSettingProps> = ({
   const radioRefs = useRef<Map<number, HTMLInputElement>>(new Map());
   const [isFocused, setIsFocused] = useState(false);
 
-  const selectOption = (timeValue: number):void => {
+  const selectOption = (timeValue: number): void => {
     adjustEndTime(timeValue * 60);
     setSelectedTime(timeValue);
   }
@@ -37,7 +37,7 @@ const TimeSetting: React.FC<TimeSettingProps> = ({
     if (el) { el.scrollTop = initScrollPos; }
   }, []);
 
-  // shortcut
+  // shortcut スクロールしないようにする
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key.toLowerCase() === 'm') {
@@ -62,7 +62,7 @@ const TimeSetting: React.FC<TimeSettingProps> = ({
   return (
     <div
       ref={scrollRef}
-      className="flex flex-col w-full h-24 bg-white rounded-md overflow-y-scroll dark:bg-black/60"
+      className="flex flex-col w-full h-[90px] bg-white rounded-md overflow-y-scroll dark:bg-black/60"
     >
     {TIME_OPTIONS.map((timeOption) => (
       <div

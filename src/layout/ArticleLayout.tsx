@@ -15,10 +15,10 @@ const ArticleLayout: React.FC = () => {
           h1 {
             margin-bottom: 1rem;
           }
-          h1, h2 {
+          h1, h2, h3 {
             font-weight: bold;
           }
-          h1, h2, p, li {
+          h1, h2, h3, p, li {
             line-height: 1.6;
             color: #555;
           }
@@ -28,14 +28,30 @@ const ArticleLayout: React.FC = () => {
           h2 {
             font-size: 1.3rem;
           }
+          h3 {
+            margin-right: 1rem;
+            margin-bottom: .6rem;
+            border-bottom: solid 1px #555;
+            font-size: 1rem;
+          }
           p, ul, img {
             margin-bottom: 1.5rem;
           }
           p:last-child {
             margin-bottom: .8rem;
           }
+          li {
+            margin-bottom: 0.4rem;
+          }
           li::before {
-            content: '- ';
+            content: '';
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            border-top: solid 2px #555;
+            border-right: solid 2px #555;
+            margin-right: 10px;
+            transform: rotate(45deg) translateY(-2px);
           }
           a {
             color: #00f;

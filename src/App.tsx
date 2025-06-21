@@ -9,7 +9,9 @@ import HomePage from './pages/HomePage'
 import ArticleLayout from './layout/ArticleLayout'
 import NotFoundPage from './pages/NotFoundPage'
 import ContactPage from './pages/ContactPage'
-import SinglePage from './layout/SinglePage'
+import HowToUsePage from './pages/HowToUsePage'
+import About from './pages/About'
+import PolicyPage from './pages/PolicyPage'
 
 const router =createBrowserRouter(
   createRoutesFromElements(
@@ -17,8 +19,9 @@ const router =createBrowserRouter(
       <Route index element={<HomePage />} />
       
       <Route path='/' element={<ArticleLayout />}>
-        <Route path='/about' element={<SinglePage id="about" title="About" />} />
-        <Route path='/privacy-policy' element={<SinglePage id="policy" title="Privacy Policy" />} />
+        <Route path='/howtouse' element={<HowToUsePage />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/privacy-policy' element={<PolicyPage />} />
         <Route path='/contact' element={<ContactPage />} />
       </Route>
       

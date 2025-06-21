@@ -10,3 +10,16 @@ export const fetchArticleById = async (id: string) => {
   const data = await res.json();
   return data;
 };
+
+export const fetchImage = async (contentId: string) => {
+  const res = await fetch(
+    `https://${serviceDomain}.microcms.io/api/v1/photos/${contentId}`,
+    {
+      headers: {
+        "X-MICROCMS-API-KEY": apiKey,
+      },
+    }
+  );
+  const data = await res.json();
+  return data;
+}

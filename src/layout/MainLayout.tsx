@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./header/Header";
 import Footer from "./Footer";
 import { useEffect, useRef, useState } from "react";
+import ScrollToTop from "../utils/ScrollToTop";
 
 const MainLayout: React.FC = () => {
   
@@ -16,8 +17,6 @@ const MainLayout: React.FC = () => {
     if (headerRef.current) {
       setHeaderHeight(headerRef.current.getBoundingClientRect().height);
     }
-  }, []);
-  useEffect(() => {
     if (footerRef.current) {
       setFooterHeight(footerRef.current.getBoundingClientRect().height);
     }
@@ -27,7 +26,7 @@ const MainLayout: React.FC = () => {
 
   return (
     <>
-      <header ref={headerRef} className="relative py-2 px-5 bg-blue-600 dark:bg-[#0C114C]">
+      <header ref={headerRef} className="relative py-[2.4px] px-5 bg-blue-600 dark:bg-[#0C114C]">
         <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setMenuIsOpen} />
       </header>
       {isMenuOpen && <div 
@@ -41,10 +40,11 @@ const MainLayout: React.FC = () => {
           z-10
         "
       />}
-      <main className="pt-3 px-5 bg-blue-200 dark:bg-[#1c2f47]" style={{ minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)` }} >
+      <ScrollToTop />
+      <main className="pt-5 px-5 pb-5 bg-blue-200 dark:bg-[#1c2f47]" style={{ minHeight: `calc(100vh - ${headerHeight}px)` }} >
         <Outlet />
       </main>
-      <footer ref={footerRef} className="bg-blue-200 dark:bg-[#1c2f47]">
+      <footer ref={footerRef} className="bg-blue-200 bg-[#eaeaea] dark:bg-[#1c2f47]">
         <Footer />
       </footer>
     </>

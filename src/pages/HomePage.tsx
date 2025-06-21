@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { INIT_MIN } from "../utils/constants";
+import { INIT_MIN } from "../features/timer/timerConsts";
 import Title from "../layout/Title";
 import Dials from "../features/timer/Dials";
 import VisualTimer from "../features/timer/VisualTimer";
@@ -112,7 +112,7 @@ const HomePage: React.FC = () => {
         <Dials />
         <VisualTimer remainingTime={remainingTime} />
       </section>
-      <section className="pt-2 px-4 pb-3 w-full rounded-md bg-white/60 backdrop-opacity-5 backdrop-invert dark:bg-black/60">
+      <section className="mt-[10px] pt-2 px-4 pb-3 w-full rounded-md bg-white/60 backdrop-opacity-5 backdrop-invert dark:bg-black/60">
         <h2 className="mb-5 text-6xl text-center font-bold dark:text-[#ccc]">
           {getFormatTime(remainingTime)}
         </h2>
