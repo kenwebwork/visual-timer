@@ -8,7 +8,6 @@ import ScrollToTop from "../utils/ScrollToTop";
 const MainLayout: React.FC = () => {
   
   const headerRef = useRef<HTMLElement | null>(null);
-  const footerRef = useRef<HTMLElement | null>(null);
 
   const [headerHeight, setHeaderHeight] = useState<number | null>(null);
 
@@ -40,7 +39,7 @@ const MainLayout: React.FC = () => {
       <main className="pt-5 px-5 pb-5 bg-blue-200 dark:bg-[#1c2f47]" style={{ minHeight: `calc(100vh - ${headerHeight}px)` }} >
         <Outlet />
       </main>
-      <footer ref={footerRef} className="bg-blue-200 bg-[#eaeaea] dark:bg-[#1c2f47]">
+      <footer className="bg-blue-200 bg-[#eaeaea] dark:bg-[#1c2f47]">
         <Footer />
       </footer>
     </>

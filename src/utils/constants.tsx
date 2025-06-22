@@ -1,4 +1,4 @@
-export const APP_NAME: string = 'BoostTimer';
+export const APP_NAME: string = 'Boost-Timer';
 export const APP_URL: string = 'https://b-timer.com';
 
 // export const EMAIL_ADSRESS: string = 'support@hoge.com';
