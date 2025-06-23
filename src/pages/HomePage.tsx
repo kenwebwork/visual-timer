@@ -43,7 +43,7 @@ const HomePage: React.FC = () => {
     };
   }, [isRunning]);
 
-  // manually setting
+  // changing setting
   const adjustEndTime = (newRemainingTime: number) => {
     setRemainingTime(newRemainingTime);
 
@@ -84,7 +84,7 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent): void => {
       const key = event.key.toLowerCase();
-      if (event.code === "Space" || key === "k") {
+      if (event.code === "Space" || event.code === "Enter" || key === "k") {
         event.preventDefault();
         setIsRunning((prev) => !prev);
       } else if (key === "l") {
@@ -97,6 +97,10 @@ const HomePage: React.FC = () => {
         skipSeconds(false, 5);
       } else if (key === "r") {
         reset();
+      } else if (key === "d") {
+        setRemainingTime(INIT_MIN * 60);
+        const now = Date.now();
+        endTimeRef.current = now + INIT_MIN * 60 * 1000;
       }
     };
     

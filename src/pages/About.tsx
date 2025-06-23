@@ -2,6 +2,7 @@ import React from 'react'
 import Title from '../layout/Title'
 import { APP_NAME } from '../utils/constants'
 import image from '../assets/images/howToUse.webp'
+import { Link } from 'react-router-dom'
 
 const About: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const About: React.FC = () => {
       <img src={image} alt="how to use" />
       <p>But here's a cool bonus: the time count is also displayed on this page's tab! You can quickly check the time without swiching screens.</p>
       <p>Handy. right? 😊</p>
+      <p>If you want to know shortcuts, access <Link to='/howtouse'>How to use page</Link>.</p>
       <h2>Take a Break</h2>
       <p>When the timer hits 00:00, it's your cue to take a well-deserved break! Recharge your energy before diving into your next task.</p>
       <p>This approach is inspired by the famous <span className='font-bold'>Pomodoro Technique</span>! It's all about repeating simple cycles, like 30 minutes: 25 minutes of forcused work followed by a 5-minute break.</p>

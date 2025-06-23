@@ -1,8 +1,8 @@
 import React from 'react'
 import Title from '../layout/Title'
-import image_KSpace from '../assets/images/KAndSpace.webp'
-import image_JLArrow from '../assets/images/JLArrow.webp'
+import image_JLArrow from '../assets/images/SC_JLArrow.webp'
 import image_separate from '../assets/images/howToUse.webp'
+import image_SC_startStop from '../assets/images/SC_startStop.webp'
 
 const HowToUsePage: React.FC = () => {
   return (
@@ -15,11 +15,11 @@ const HowToUsePage: React.FC = () => {
       <p>But here's a cool bonus: the time count is also displayed on this page's tab! You can quickly check the time without swiching screens.</p>
       <p>Handy. right? 😊</p>
       <h2>Shortcuts</h2>
-      <h3>K or Space : start / pause</h3>
+      <h3>K or Space or Enter : start / pause</h3>
       <p>Starts or pauses the timer. Use this to quickly begin or take a break from your session.</p>
+      <img src={image_SC_startStop} alt="keyboard" />
       <h3>M : focus the time menu</h3>
       <p>Focuses the time selection menu. Press again to remove the focus. Useful for changing the time using the keyboard.</p>
-      <img src={image_KSpace} alt="keyboard" />
       <h3>R : reset time</h3>
       <p>Resets the timer to the originally selected time. Handy when you want to restart your session from the beginning.</p>
       <h3>L, J, ◀, ▶ : rewind and forward</h3>
