@@ -5,6 +5,8 @@ import Dials from "../features/timer/Dials";
 import VisualTimer from "../features/timer/VisualTimer";
 import getFormatTime from "../features/timer/functions/getFormatTime";
 import Controller from "../features/timer/Controller";
+import useSound from "use-sound";
+import Sound from "../assets/sounds/timerEnd.mp3";
 
 const HomePage: React.FC = () => {
   const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
@@ -15,6 +17,8 @@ const HomePage: React.FC = () => {
   const endTimeRef = useRef<number | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+  const [timerEnd] = useSound(Sound);
+
   // timer
   useEffect(() => {
     if (!isRunning) {return}
@@ -22,10 +26,14 @@ const HomePage: React.FC = () => {
     const now: number = Date.now();
     endTimeRef.current = now + remainingTime * 1000;
 
-    const tick = () =>{
+    const tick = () => {
       const now: number = Date.now();
       const diff: number = Math.max(0, Math.ceil((endTimeRef.current! - now) / 1000));
       setRemainingTime(diff);
+
+      if (diff === 4) {
+        timerEnd();
+      }
 
       if (diff <= 0) {
         setIsRunning(false);
@@ -43,7 +51,7 @@ const HomePage: React.FC = () => {
     };
   }, [isRunning]);
 
-  // changing setting
+  // changing settings
   const adjustEndTime = (newRemainingTime: number) => {
     setRemainingTime(newRemainingTime);
 
