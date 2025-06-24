@@ -10,7 +10,8 @@ import Sound from "../assets/sounds/timerEnd.mp3";
 
 const HomePage: React.FC = () => {
   const [isRunning, setIsRunning] = useState<boolean>(false);
-  const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
+  const [remainingTime, setRemainingTime] = useState<number>(5);
+  // const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
   const [selectedTime, setSelectedTime] = useState<number>(INIT_MIN);
   
   const selectedTimeRef = useRef(selectedTime);
@@ -18,7 +19,7 @@ const HomePage: React.FC = () => {
   const endTimeRef = useRef<number | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const [timerEnd] = useSound(Sound);
+  const [timerEnd] = useSound(Sound, { volume: 2.5 });
 
   // for reset
   useEffect(() => {
@@ -37,7 +38,7 @@ const HomePage: React.FC = () => {
       const diff: number = Math.max(0, Math.ceil((endTimeRef.current! - now) / 1000));
       setRemainingTime(diff);
 
-      if (diff === 4) {
+      if (diff === 3) {
         timerEnd();
       }
 
@@ -47,7 +48,7 @@ const HomePage: React.FC = () => {
     }
 
     tick();
-    timerRef.current = setInterval(tick, 500);
+    timerRef.current = setInterval(tick, 1000);
 
     return () => {
       if (timerRef.current) {
