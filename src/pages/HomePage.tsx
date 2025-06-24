@@ -115,7 +115,6 @@ const HomePage: React.FC = () => {
   return (
     <>
     <Title pageName={getFormatTime(remainingTime)} isRunning={isRunning} />
-      <p>{selectedTime}</p>
     <div className="w-screen-85 max-w-350 m-auto pt-5 flex flex-col justify-center items-center">
       <section className="relative w-11/12 max-h-80 mb-7 aspect-square">
         <Dials />
