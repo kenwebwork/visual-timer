@@ -10,8 +10,7 @@ import Sound from "../assets/sounds/timerEnd.mp3";
 
 const HomePage: React.FC = () => {
   const [isRunning, setIsRunning] = useState<boolean>(false);
-  const [remainingTime, setRemainingTime] = useState<number>(5);
-  // const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
+  const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
   const [selectedTime, setSelectedTime] = useState<number>(INIT_MIN);
   
   const selectedTimeRef = useRef(selectedTime);
