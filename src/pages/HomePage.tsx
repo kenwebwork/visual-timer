@@ -9,15 +9,21 @@ import useSound from "use-sound";
 import Sound from "../assets/sounds/timerEnd.mp3";
 
 const HomePage: React.FC = () => {
+  const [isRunning, setIsRunning] = useState<boolean>(false);
   const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
   const [selectedTime, setSelectedTime] = useState<number>(INIT_MIN);
-  const [isRunning, setIsRunning] = useState<boolean>(false);
-
+  
+  const selectedTimeRef = useRef(selectedTime);
   const startTimeRef = useRef<number | null>(null);
   const endTimeRef = useRef<number | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const [timerEnd] = useSound(Sound);
+
+  // for reset
+  useEffect(() => {
+    selectedTimeRef.current = selectedTime;
+  }, [selectedTime]);
 
   // timer
   useEffect(() => {
@@ -41,7 +47,7 @@ const HomePage: React.FC = () => {
     }
 
     tick();
-    timerRef.current = setInterval(tick, 1000);
+    timerRef.current = setInterval(tick, 500);
 
     return () => {
       if (timerRef.current) {
@@ -54,11 +60,8 @@ const HomePage: React.FC = () => {
   // changing settings
   const adjustEndTime = (newRemainingTime: number) => {
     setRemainingTime(newRemainingTime);
-
-    if (isRunning) {
-      const now = Date.now();
-      endTimeRef.current = now + newRemainingTime * 1000;
-    }
+    const now = Date.now();
+    endTimeRef.current = now + newRemainingTime * 1000;
   };
 
   // clear ref
@@ -81,11 +84,8 @@ const HomePage: React.FC = () => {
   };
 
   const reset = () => {
-    const newRemaining = selectedTime * 60;
-    setRemainingTime(newRemaining);
-    
-    const now = Date.now();
-    endTimeRef.current = now + newRemaining * 1000;
+    const newTime = selectedTimeRef.current * 60;
+    adjustEndTime(newTime)
   };
 
   // handle key down 
@@ -105,10 +105,6 @@ const HomePage: React.FC = () => {
         skipSeconds(false, 5);
       } else if (key === "r") {
         reset();
-      } else if (key === "d") {
-        setRemainingTime(INIT_MIN * 60);
-        const now = Date.now();
-        endTimeRef.current = now + INIT_MIN * 60 * 1000;
       }
     };
     
@@ -119,6 +115,7 @@ const HomePage: React.FC = () => {
   return (
     <>
     <Title pageName={getFormatTime(remainingTime)} isRunning={isRunning} />
+      <p>{selectedTime}</p>
     <div className="w-screen-85 max-w-350 m-auto pt-5 flex flex-col justify-center items-center">
       <section className="relative w-11/12 max-h-80 mb-7 aspect-square">
         <Dials />
