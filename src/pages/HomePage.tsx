@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
   const endTimeRef = useRef<number | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const [timerEnd] = useSound(Sound, { volume: 2.5 });
+  const [timerEnd] = useSound(Sound, { volume: 2 });
 
   // for reset
   useEffect(() => {
