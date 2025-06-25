@@ -24,24 +24,21 @@ const ArticleLayout: React.FC = () => {
           }
           h1 {
             font-size: 1.6rem;
+            font-size:36px;
           }
-          h2 {
-            margin-bottom: 12px;
-            padding-left: 4px;
-            border-top: solid 2px transparent;
-            border-left: solid 4px #3263f5;
-            border-bottom: solid 2px #aaa;
-            border-right: solid 2px transparent;
-            font-size: 1.3rem;
+          h2, h3 {
+            margin-top: 45px;
+            margin-bottom: 18px;
+            font-size: 26px;
           }
           h3 {
-            margin-right: 1rem;
-            margin-bottom: .6rem;
-            font-size: 1rem;
-            text-decoration: underline;
+            font-size: 22px;
           }
           p, ul, img {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
+          }
+          p {
+            font-size: 1rem;
           }
           p:last-child {
             margin-bottom: .8rem;
