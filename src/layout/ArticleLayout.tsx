@@ -26,13 +26,19 @@ const ArticleLayout: React.FC = () => {
             font-size: 1.6rem;
           }
           h2 {
+            margin-bottom: 12px;
+            padding-left: 4px;
+            border-top: solid 2px transparent;
+            border-left: solid 4px #3263f5;
+            border-bottom: solid 2px #aaa;
+            border-right: solid 2px transparent;
             font-size: 1.3rem;
           }
           h3 {
             margin-right: 1rem;
             margin-bottom: .6rem;
-            border-bottom: solid 1px #555;
             font-size: 1rem;
+            text-decoration: underline;
           }
           p, ul, img {
             margin-bottom: 1.5rem;
