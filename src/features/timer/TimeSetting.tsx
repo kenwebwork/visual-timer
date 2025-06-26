@@ -37,7 +37,7 @@ const TimeSetting: React.FC<TimeSettingProps> = ({
     if (el) { el.scrollTop = initScrollPos; }
   }, []);
 
-  // shortcut スクロールしないようにする
+  // shortcut
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key.toLowerCase() === 'm') {
