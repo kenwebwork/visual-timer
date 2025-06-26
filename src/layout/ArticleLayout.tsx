@@ -10,7 +10,7 @@ const ArticleLayout: React.FC = () => {
       <style>{`
         section {
           margin: auto;
-          max-width: 384px;
+          max-width: 600px;
 
           h1 {
             margin-bottom: 1rem;

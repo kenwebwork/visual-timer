@@ -1,14 +1,27 @@
 import React from "react";
 import { APP_NAME, PAGES } from "../utils/constants";
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Footer: React.FC = () => {
+  
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+  const className = isHome
+    ? "max-w-96 m-auto pt-4 pb-4 text-md text-center text-gray-600"
+    : "max-w-[600px] m-auto pt-4 pb-4 text-md text-center text-gray-600"
+
   return (
-    <div className="max-w-96 m-auto pt-4 pb-1 text-sm text-center text-gray-600">
+    <div className={className}>
       <ul className="mb-3 flex justify-center">
         {PAGES.map((page, i) => (
           <li>
-            <Link to={page.url} className="ml-1 mr-1 underline">{page.title}</Link>
+            <NavLink
+              to={page.url}
+              className={({isActive}) => isActive 
+                ? "ml-1 mr-1 underline"
+                : "ml-1 mr-1"
+              }
+            >{page.title}</NavLink>
             {(PAGES.length - 1 === i) || <span> | </span>}
           </li>
         ))}

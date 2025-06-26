@@ -39,7 +39,7 @@ const MainLayout: React.FC = () => {
       <main className="pt-5 px-5 pb-5 bg-blue-200 dark:bg-[#1c2f47]" style={{ minHeight: `calc(100vh - ${headerHeight}px)` }} >
         <Outlet />
       </main>
-      <footer className="bg-blue-200 bg-[#eaeaea] dark:bg-[#1c2f47]">
+      <footer className="pb-3 bg-blue-200 bg-[#eaeaea] dark:bg-[#1c2f47]">
         <Footer />
       </footer>
     </>
