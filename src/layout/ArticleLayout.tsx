@@ -23,8 +23,7 @@ const ArticleLayout: React.FC = () => {
             color: #555;
           }
           h1 {
-            font-size: 1.6rem;
-            font-size:36px;
+            font-size:30px;
           }
           h2, h3 {
             margin-top: 45px;
@@ -34,7 +33,7 @@ const ArticleLayout: React.FC = () => {
           h3 {
             font-size: 22px;
           }
-          p, ul, img {
+          p, ul {
             margin-bottom: 20px;
           }
           p {
@@ -62,6 +61,7 @@ const ArticleLayout: React.FC = () => {
           }
           img {
             border-radius: 0.375rem;
+            margin-bottom: 35px;
           }
         }
       `}</style>
