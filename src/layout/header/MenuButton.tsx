@@ -5,20 +5,20 @@ const MenuButton: React.FC<HeaderProps> = ({isMenuOpen, setIsMenuOpen}) => {
 
   const [isHover, setIsHover] = useState<boolean>(false);
 
-  const styleBase: string = "relative py-1 px-2 rounded-md font-bold translate-x-2 text-md border-2 cursor-pointer"
-  const style: string = isHover
-    ? isMenuOpen
-        ? styleBase + ' text-blue-600 bg-white border-transparent'
-        : styleBase + ' text-white'
-    : styleBase + ' text-white border-transparent'
+  const outerBaseStyle: string = "relative py-1 px-2 rounded-md font-bold translate-x-2 text-sm cursor-pointer";
+  const outerStyle: string = (isHover || isMenuOpen)
+    ? outerBaseStyle + " text-blue-600 bg-white"
+    : outerBaseStyle + " text-white";
 
   return (
     <div
       onClick={() => setIsMenuOpen(!isMenuOpen)}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      className={style}
-    >Menu</div>
+      className={outerStyle}
+    >
+      <div className="border-white border-t-2 border-b-2">Menu</div>
+    </div>
   );
 };
 
