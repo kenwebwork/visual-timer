@@ -12,14 +12,14 @@ const Footer: React.FC = () => {
 
   return (
     <div className={className}>
-      <ul className="mb-3 flex justify-center">
+      <ul className="mb-3 flex flex-wrap justify-center">
         {PAGES.map((page, i) => (
           <li>
             <NavLink
               to={page.url}
               className={({isActive}) => isActive 
-                ? "ml-1 mr-1 underline"
-                : "ml-1 mr-1"
+                ? "mx-1 underline"
+                : "mx-1"
               }
             >{page.title}</NavLink>
             {(PAGES.length - 1 === i) || <span> | </span>}
