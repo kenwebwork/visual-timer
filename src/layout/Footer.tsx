@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
           </li>
         ))}
       </ul>
-      <p className="text-xs">{`Copyright ©${APP_NAME} 2025`}</p>
+      <p className="text-xs">Copyright ©{APP_NAME} 2025</p>
     </div>
   );
 };
