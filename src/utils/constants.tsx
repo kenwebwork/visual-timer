@@ -14,6 +14,7 @@ export const PAGES: pages[] = [
   { title: 'Top', url: '/' },
   { title: 'About', url: '/about' },
   { title: 'How to use', url: '/howtouse' },
+  { title: 'Focus tips', url: '/focus-tips' },
   { title: 'Contact', url: '/contact' },
   { title: 'Privacy Policy', url: '/privacy-policy' },
 ]

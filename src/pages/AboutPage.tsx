@@ -4,7 +4,7 @@ import { APP_NAME } from '../utils/constants'
 import image from '../assets/images/howToUse.webp'
 import { Link } from 'react-router-dom'
 
-const About: React.FC = () => {
+const AboutPage: React.FC = () => {
   return (
     <>
       <Title pageName='About' />
@@ -36,4 +36,4 @@ const About: React.FC = () => {
   )
 }
 
-export default About
+export default AboutPage

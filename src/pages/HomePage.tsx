@@ -121,7 +121,7 @@ const HomePage: React.FC = () => {
         <VisualTimer remainingTime={remainingTime} />
       </section>
       <section className="mt-[10px] pt-2 px-4 pb-3 w-full rounded-md bg-white/60 backdrop-opacity-5 backdrop-invert dark:bg-black/60">
-        <h1 className="mb-5 text-6xl text-center font-bold dark:text-[#ccc] font-[Noto-Sans]">
+        <h1 className="mb-5 text-6xl text-center font-bold dark:text-[#ccc] font-[M PLUS Rounded 1c]">
           {getFormatTime(remainingTime)}
         </h1>
         <Controller 

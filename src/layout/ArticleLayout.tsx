@@ -57,7 +57,6 @@ const ArticleLayout: React.FC = () => {
           }
           a {
             color: #00f;
-            text-decoration: underline;
           }
           img {
             border-radius: 0.375rem;
