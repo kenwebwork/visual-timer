@@ -2,7 +2,7 @@ export const APP_NAME: string = 'Boost-Timer';
 export const APP_URL: string = 'https://b-timer.com';
 
 // export const EMAIL_ADSRESS: string = 'support@hoge.com';
-export const X_ACCOUNT: string = 'https://x.com/Ken_BTimer_dev';
+export const X_ACCOUNT: string = 'https://x.com/boost_timer';
 export const THREADS_ACCOUNT: string = 'https://www.threads.net/@b_timer_';
 export const MEDIUM_ACCOUNT: string = 'https://medium.com/@Ken_b-timer';
 
