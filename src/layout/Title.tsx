@@ -8,10 +8,10 @@ interface TitleProps {
 }
 
 const Title: React.FC<TitleProps> = ({pageName, isRunning}) => {
-  const runningIcon: string | undefined = isRunning ? "▶ " : "";
+  const runningIcon: string | undefined = isRunning ? " ▶" : "";
 
   useEffect(() => {
-    document.title = runningIcon + pageName + " | " + APP_NAME;
+    document.title = pageName + runningIcon + " | " + APP_NAME;
   }, [pageName, isRunning]);
 
   return null;
