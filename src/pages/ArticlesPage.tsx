@@ -35,8 +35,8 @@ const ArticlesPage: React.FC = () => {
     },
   };
 
-  const getSnippet = (html: string) => {
-    const plainText = htmlToPlainText(html);
+  const getSnippet = (html: string | undefined) => {
+    const plainText = html ? htmlToPlainText(html) : "preparing ...";
     return plainText.length > 100 ? plainText.slice(0, 100) + ' ...' : plainText;
   }
 
@@ -46,7 +46,7 @@ const ArticlesPage: React.FC = () => {
       <h1>Focus Tips</h1>
       <div>
         {articles.map((article) => (
-          <Link to={`/focus-tips/${article.id}`} className='block mb-[50px] text-[#555] cursor-pointer'>
+          <Link to={`/focus-tips/${article.id}`} key={article.id} className='block mb-[50px] text-[#555] cursor-pointer'>
             <div className='max-w-[480px] mx-auto mb-5 bg-gray-300 rounded-md'>
               <img src={article.thumbnail?.url} alt={article.title} className='mb-0' loading="lazy" />
             </div>
