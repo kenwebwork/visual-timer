@@ -11,9 +11,10 @@ interface ArtilceItemsProps {
 const ArticleItems:React.FC<ArtilceItemsProps> = ({ article }) => {
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
 
+  const sliceIndex: number = 150;
   const getSnippet = (html: string | undefined) => {
     const plainText = html ? htmlToPlainText(html) : "preparing ...";
-    return plainText.length > 100 ? plainText.slice(0, 100) + ' ...' : plainText;
+    return plainText.length > sliceIndex ? plainText.slice(0, sliceIndex) + ' ...' : plainText;
   }
 
   return (
