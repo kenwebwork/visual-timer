@@ -5,10 +5,13 @@ import { DOMNode, domToReact, Element, HTMLReactParserOptions } from 'html-react
 import { Link } from 'react-router-dom';
 import { htmlToPlainText } from '../utils/htmlToPlainText';
 import { Article } from '../interfaces/article';
+import LoadingCircle from '../layout/LoadingCircle';
 
 const ArticlesPage: React.FC = () => {
 
   const [articles, setArticles] = useState<Article[]>([]);
+  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
+
   useEffect(() => {
     const fetchBlogs = async () => {
       const data = await getArticleList();
@@ -48,7 +51,17 @@ const ArticlesPage: React.FC = () => {
         {articles.map((article) => (
           <Link to={`/focus-tips/${article.id}`} key={article.id} className='block mb-[50px] text-[#555] cursor-pointer'>
             <div className='max-w-[480px] mx-auto mb-5 bg-gray-300 rounded-md'>
-              <img src={article.thumbnail?.url} alt={article.title} className='mb-0' loading="lazy" />
+              {!isImageLoaded && <LoadingCircle />}
+              {article.thumbnail && (
+                <img
+                  src={article.thumbnail?.url}
+                  alt={article.title}
+                  className='mb-0'
+                  loading="lazy"
+                  onLoad={() => setIsImageLoaded(true)}
+                  onError={() => setIsImageLoaded(true)}
+                />
+              )}
             </div>
             <div className='text-xl font-bold'>{article.title}</div>
             {getSnippet(article.body)}
