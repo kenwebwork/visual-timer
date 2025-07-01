@@ -7,6 +7,7 @@ import { Article } from "../interfaces/article";
 import { client } from "../utils/clients";
 import { generateTocFromHtml, TocItem } from "../utils/generateToc";
 import TableOfContents from "../features/article/TableOfContents";
+import { Helmet } from "react-helmet-async";
 
 
 const SinglePage: React.FC = () => {
@@ -46,6 +47,9 @@ const SinglePage: React.FC = () => {
   return (
     <>
       <Title pageName={article.title} />
+      <Helmet>
+        <meta name="description" content={article.meta} />
+      </Helmet>
       <h1>{article.title}</h1>
       <img src={article.thumbnail?.url} alt={article.title} />
       <div>{article.lead ? parse(article.lead, options) : <p>Preparing...</p>}</div>
