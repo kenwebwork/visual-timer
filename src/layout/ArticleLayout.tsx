@@ -33,7 +33,7 @@ const ArticleLayout: React.FC = () => {
           h3 {
             font-size: 22px;
           }
-          p, ul {
+          p{
             margin-bottom: 20px;
           }
           p {
@@ -42,10 +42,13 @@ const ArticleLayout: React.FC = () => {
           p:last-child {
             margin-bottom: .8rem;
           }
+          ul, ol {
+            margin-bottom: 30px;
+          } 
           li {
             margin-bottom: 0.4rem;
           }
-          li::before {
+          li:not(.not-icon)::before {
             content: '';
             display: inline-block;
             width: 7px;

@@ -3,14 +3,12 @@ import Title from '../layout/Title'
 import { getArticleList } from '../utils/clients';
 import { DOMNode, domToReact, Element, HTMLReactParserOptions } from 'html-react-parser';
 import { Link } from 'react-router-dom';
-import { htmlToPlainText } from '../utils/htmlToPlainText';
 import { Article } from '../interfaces/article';
-import LoadingCircle from '../layout/LoadingCircle';
+import ArticleItems from '../features/article/ArticleItems';
 
 const ArticlesPage: React.FC = () => {
 
   const [articles, setArticles] = useState<Article[]>([]);
-  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -38,36 +36,17 @@ const ArticlesPage: React.FC = () => {
     },
   };
 
-  const getSnippet = (html: string | undefined) => {
-    const plainText = html ? htmlToPlainText(html) : "preparing ...";
-    return plainText.length > 100 ? plainText.slice(0, 100) + ' ...' : plainText;
-  }
-
   return (
     <>
       <Title pageName="Focus Tips" />
       <h1>Focus Tips</h1>
-      <div>
+      <ul>
         {articles.map((article) => (
-          <Link to={`/focus-tips/${article.id}`} key={article.id} className='block mb-[50px] text-[#555] cursor-pointer'>
-            <div className='max-w-[480px] mx-auto mb-5 bg-gray-300 rounded-md'>
-              {!isImageLoaded && <LoadingCircle />}
-              {article.thumbnail && (
-                <img
-                  src={article.thumbnail?.url}
-                  alt={article.title}
-                  className='mb-0'
-                  loading="lazy"
-                  onLoad={() => setIsImageLoaded(true)}
-                  onError={() => setIsImageLoaded(true)}
-                />
-              )}
-            </div>
-            <div className='text-xl font-bold'>{article.title}</div>
-            {getSnippet(article.body)}
-          </Link>
+          <li key={article.id} className='not-icon'>
+            <ArticleItems article={article} />
+          </li>
         ))}
-      </div>
+      </ul>
     </>
   )
 }
