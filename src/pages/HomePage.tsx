@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { INIT_MIN } from "../features/timer/timerConsts";
+import { BREAK_MIN, INIT_MIN } from "../features/timer/timerConsts";
 import Title from "../layout/Title";
 import Dials from "../features/timer/Dials";
 import VisualTimer from "../features/timer/VisualTimer";
@@ -7,18 +7,32 @@ import getFormatTime from "../features/timer/functions/getFormatTime";
 import Controller from "../features/timer/Controller";
 import useSound from "use-sound";
 import Sound from "../assets/sounds/timerEnd.mp3";
+import { useOutletContext } from "react-router-dom";
+
+interface OutletContextType {
+  isBreakMode: boolean;
+  setIsBreakMode: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+// break mode になったら
+//  ページ全体の色を変える
+// ページ遷移したら青色に戻したい
 
 const HomePage: React.FC = () => {
+  
   const [isRunning, setIsRunning] = useState<boolean>(false);
-  const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
+  // const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
+  const [remainingTime, setRemainingTime] = useState<number>(10);
   const [selectedTime, setSelectedTime] = useState<number>(INIT_MIN);
   
   const selectedTimeRef = useRef(selectedTime);
   const startTimeRef = useRef<number | null>(null);
   const endTimeRef = useRef<number | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
+  
   const [timerEnd] = useSound(Sound, { volume: 2 });
+  
+  const { isBreakMode, setIsBreakMode } = useOutletContext<OutletContextType>();
 
   // for reset
   useEffect(() => {
@@ -42,7 +56,14 @@ const HomePage: React.FC = () => {
       }
 
       if (diff <= 0) {
-        setIsRunning(false);
+        // setIsRunning(false);
+        if (!isBreakMode) {
+          setIsBreakMode(true);
+          adjustEndTime(BREAK_MIN * 60);
+        } else {
+          setIsBreakMode(false);
+          adjustEndTime(selectedTime * 60);
+        }
       }
     }
 
@@ -55,7 +76,7 @@ const HomePage: React.FC = () => {
         timerRef.current = null;
       }
     };
-  }, [isRunning]);
+  }, [isRunning, isBreakMode]);
 
   // changing settings
   const adjustEndTime = (newRemainingTime: number) => {
@@ -118,7 +139,7 @@ const HomePage: React.FC = () => {
     <div className="w-screen-85 max-w-350 m-auto pt-5 flex flex-col justify-center items-center">
       <section className="relative w-11/12 max-h-80 mb-7 aspect-square">
         <Dials />
-        <VisualTimer remainingTime={remainingTime} />
+        <VisualTimer remainingTime={remainingTime} isBreakMode={isBreakMode} />
       </section>
       <section className="mt-[10px] pt-2 px-4 pb-3 w-full rounded-md bg-white/60 backdrop-opacity-5 backdrop-invert dark:bg-black/60">
         <h1 className="mb-5 text-6xl text-center font-bold dark:text-[#ccc] font-[M PLUS Rounded 1c]">

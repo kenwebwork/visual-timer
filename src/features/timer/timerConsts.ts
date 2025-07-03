@@ -1,4 +1,5 @@
 export const INIT_MIN: number = 25;
+export const BREAK_MIN: number = 5;
 
 interface settingOptions {
   value: number;
