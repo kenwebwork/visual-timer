@@ -4,7 +4,7 @@ import Header from "./header/Header";
 import Footer from "./Footer";
 import { useEffect, useRef, useState } from "react";
 import ScrollToTop from "../utils/ScrollToTop";
-import ResetBreakMode from "../utils/resetBreakMode";
+import HanldBreakMode from "../utils/HanldBreakMode";
 
 
 
@@ -47,7 +47,7 @@ const MainLayout: React.FC = () => {
         "
       />}
       <ScrollToTop />
-      <ResetBreakMode setIsBreakMode={setIsBreakMode} />
+      <HanldBreakMode setIsBreakMode={setIsBreakMode} />
       <main className={mainClass} style={{ minHeight: `calc(100vh - ${headerHeight}px)` }} >
         <Outlet context={{ isBreakMode, setIsBreakMode }}/>
       </main>
