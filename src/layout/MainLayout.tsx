@@ -7,10 +7,10 @@ import ScrollToTop from "../utils/ScrollToTop";
 import ResetBreakMode from "../utils/resetBreakMode";
 
 
+
 const MainLayout: React.FC = () => {
   
   const headerRef = useRef<HTMLElement | null>(null);
-
   const [headerHeight, setHeaderHeight] = useState<number | null>(null);
 
   useEffect(() => {

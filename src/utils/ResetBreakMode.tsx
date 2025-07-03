@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-interface ResetBreakMode {
+interface ResetBreakModeProps {
   setIsBreakMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ResetBreakMode: React.FC<ResetBreakMode> = ({ setIsBreakMode }) => {
+const ResetBreakMode: React.FC<ResetBreakModeProps> = ({ setIsBreakMode }) => {
   const { pathname } = useLocation();
   
   useEffect(() => {
