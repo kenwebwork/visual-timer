@@ -14,15 +14,10 @@ interface OutletContextType {
   setIsBreakMode: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-// break mode になったら
-//  ページ全体の色を変える
-// ページ遷移したら青色に戻したい
-
 const HomePage: React.FC = () => {
   
   const [isRunning, setIsRunning] = useState<boolean>(false);
-  // const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
-  const [remainingTime, setRemainingTime] = useState<number>(10);
+  const [remainingTime, setRemainingTime] = useState<number>(INIT_MIN * 60);
   const [selectedTime, setSelectedTime] = useState<number>(INIT_MIN);
   
   const selectedTimeRef = useRef(selectedTime);

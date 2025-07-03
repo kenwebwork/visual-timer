@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import ScrollToTop from "../utils/ScrollToTop";
 import ResetBreakMode from "../utils/resetBreakMode";
 
+
 const MainLayout: React.FC = () => {
   
   const headerRef = useRef<HTMLElement | null>(null);
