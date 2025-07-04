@@ -5,8 +5,7 @@ import Footer from "./Footer";
 import { useEffect, useRef, useState } from "react";
 import ScrollToTop from "../utils/ScrollToTop";
 import HanldBreakMode from "../utils/HanldBreakMode";
-
-
+import { useFavicon } from "../utils/useFavicon";
 
 const MainLayout: React.FC = () => {
   
@@ -30,6 +29,8 @@ const MainLayout: React.FC = () => {
     ? "pt-5 px-5 pb-5 bg-[#FFB192] dark:bg-[#1c2f47] transition duration-700"
     : "pt-5 px-5 pb-5 bg-blue-200 dark:bg-[#1c2f47] transition duration-700"
 
+  useFavicon(isBreakMode ? "../src/assets/images/icon_break.webp" : "../src/assets/images/icon.webp");
+  
   return (
     <>
       <header ref={headerRef} className={headerClass}>
