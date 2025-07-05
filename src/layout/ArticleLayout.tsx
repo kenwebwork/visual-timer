@@ -65,6 +65,12 @@ const ArticleLayout: React.FC = () => {
             border-radius: 0.375rem;
             margin-bottom: 35px;
           }
+          blockquote {
+            padding: 10px;
+            margin-bottom: 1rem;
+            background-color: #e3e8ee;
+            border-left: solid 3px #9fa7ad;
+          }
         }
       `}</style>
     </>
