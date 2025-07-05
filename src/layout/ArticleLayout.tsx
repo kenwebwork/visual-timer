@@ -43,12 +43,17 @@ const ArticleLayout: React.FC = () => {
             margin-bottom: .8rem;
           }
           ul, ol {
+            margin-top: 25px;
             margin-bottom: 30px;
           } 
           li {
             margin-bottom: 0.4rem;
           }
-          li:not(.not-icon)::before {
+          ol {
+            list-style-type: decimal;
+            margin-left: 1rem;
+          }
+          ul li:not(.not-icon)::before {
             content: '';
             display: inline-block;
             width: 7px;
