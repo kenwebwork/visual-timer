@@ -8,6 +8,7 @@ import Controller from "../features/timer/Controller";
 import useSound from "use-sound";
 import Sound from "../assets/sounds/timerEnd.mp3";
 import { useOutletContext } from "react-router-dom";
+import useWakeLock from "../utils/useWakeLock";
 
 interface OutletContextType {
   isBreakMode: boolean;
@@ -127,6 +128,9 @@ const HomePage: React.FC = () => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  // wake lock
+  useWakeLock(isRunning);
 
   return (
     <>
