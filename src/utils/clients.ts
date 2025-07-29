@@ -11,7 +11,7 @@ export const client = createClient({
 export const getArticleList = async () => {
   const data = await client.get({
     endpoint: 'articles',
-    queries: { limit: 10, offset: 0, orders: '-publishedAt' },
+    queries: { limit: 100, offset: 0, orders: '-publishedAt' },
   });
   return data.contents;
 };
